@@ -66,11 +66,13 @@ const requestHandler = (request, response) => {
 		db.collection('ge17').count(function(err, count) {
 
 		response.write("we have "+count+" tweets!");
+    var counter =0;
     for(var i=0; i<groups.length;i++){
       db.collection(groups[i]).count(function(err, count) {
         response.write(groups[i]+" has "+count+" tweets");
-        console.log(i,groups.length,count);
-        if(i == (groups.length)) {
+        counter ++;
+        console.log(counter,groups.length,count);
+        if(counter == (groups.length)) {
           db.close();
           response.end();
         }
