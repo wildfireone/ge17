@@ -69,8 +69,9 @@ const requestHandler = (request, response) => {
     var counter =0;
     for(var i=0; i<groups.length;i++){
       db.collection(groups[i]).count(function(err, count) {
-        response.write(groups[i]+" has "+count+" tweets");
         counter ++;
+        response.write(groups[counter]+" has "+count+" tweets");
+
         console.log(counter,groups.length,count);
         if(counter == (groups.length)) {
           db.close();
