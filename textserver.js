@@ -65,12 +65,12 @@ const requestHandler = (request, response) => {
   		response.write("Connected correctly to server \n");
 		db.collection('ge17').count(function(err, count) {
 
-		response.write("we have "+count+" tweets!");
+		response.write("we have "+count+" tweets! \n");
     var counter =0;
     for(var i=0; i<groups.length;i++){
       db.collection(groups[i]).count(function(err, count) {
         counter ++;
-        response.write(groups[counter]+" has "+count+" tweets");
+        response.write(groups[counter]+" has "+count+" tweets \n");
 
         console.log(counter,groups.length,count);
         if(counter == (groups.length)) {
