@@ -70,7 +70,7 @@ const requestHandler = (request, response) => {
       db.collection(groups[i]).count(function(err, count) {
         response.write(groups[i]+" has "+count+" tweets");
         console.log(i,groups.length,count);
-        if(i == (groups.length -1)) {
+        if(i == (groups.length)) {
           db.close();
           response.end();
         }
