@@ -3,7 +3,7 @@
 * @Date:   12-May-172017
 * @Filename: debates.js
 * @Last modified by:   john
-* @Last modified time: 20-May-172017
+* @Last modified time: 21-May-172017
 */
 
 var MongoClient = require('mongodb').MongoClient;
@@ -16,7 +16,7 @@ var hashcounter = require('./hashcounter');
 var mentioncounter = require('./mentioncounter');
 //var endpoints = require('./endpoints');
 var debateprefix = "livetest";
-var trackingtag = 'ge17';
+var trackingtag = 'LeadersDebate';
 
 var client = new Twitter({
   consumer_key: 'TC98w89JxQK2v4vPEqLLxJLx0',

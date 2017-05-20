@@ -10,14 +10,14 @@
 
 // content of index.js
 const http = require('http');
-const port = 80;
+const port = 9090;
 const fs = require('fs');
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var ObjectId = require('mongodb').ObjectID;
 var mongoURL = 'mongodb://localhost:27017/tweets';
 var prefix = "livetest";
-var trackingtag = 'ge17';
+var trackingtag = 'LeadersDebate';
 
 
 
@@ -101,7 +101,7 @@ var servePage = function(response, page) {
 
     });
 }
-
+var lastvalues = [];
 
 
 
@@ -117,20 +117,14 @@ var getMentions = function(response) {
         var collection = db.collection(prefix + 'debatementioncounts');
         collection.find().toArray(function(err, documents) {
             //console.log("prefix + 'debatementioncounts' " + JSON.stringify(documents));
-            for (var i = 0; i < documents.length; i++) {
+            for (var i = 1; i < documents.length; i++) {
 
                 var index = labels.indexOf(documents[i].account);
 
                 if(!data[index]){var dataline = []; data[index] = dataline;}
-
-                var val = documents[i].count;
-                var minute = documents[i].minute;
-                var datarow = data[index];
-
-
-                    var last = getLastValue(datarow,parseInt(minute));
-
-                    val = val - last
+                var val = documents[i].count
+                if(lastvalues[index]){ val = documents[i].count - lastvalues[index];}
+                lastvalues[index] = documents[i].count;
                     data[index].push({
                         "minute": documents[i].minute,
                         "value": val
