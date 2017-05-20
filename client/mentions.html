@@ -1,0 +1,64 @@
+<!--
+@Author: John Isaacs <john>
+@Date:   13-May-172017
+@Filename: hashtags.html
+@Last modified by:   john
+@Last modified time: 20-May-172017
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Not Found</title>
+    <meta charset="UTF-8">
+    <script src='./js/jquery.min.js'></script>
+    <script src='./js/d3.min.js'></script>
+    <script src='./js/metricsgraphics.min.js'></script>
+    <link href='./css/metricsgraphics.css' rel='stylesheet' type='text/css'>
+    <link href='./css/leaders.css' rel='stylesheet' type='text/css'>
+    <style>
+        #tags {
+            width: 90%;
+            margins: auto;
+        }
+    </style>
+    <script>
+
+        function generateGraph(){
+            d3.json('http://localhost:9090/mentiondata', function(data) {
+                //modify away!
+                //console.log(data);
+                MG.data_graphic({
+                    title: "Mentions under " + data.trackingtag,
+                    description: "test",
+                    data: data.data,
+                    legend: data.labels,
+                    width: 800,
+                    height: 700,
+                    target: "#mentions",
+                    x_accessor: "minute",
+                    y_accessor: "value",
+                    y_extended_ticks: true,
+                    aggregate_rollover: true,
+                    full_width: true,
+                    legend_target: '#legend'
+                });
+
+
+            });
+
+        }
+        generateGraph();
+        setInterval(function(){generateGraph()}, 60000)
+    </script>
+</head>
+
+<body>
+    <div id="mentions">
+
+
+    </div>
+    <div id="legend">
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{
+    "labels": ['NicolaSturgeon', 'kezdugdale','patrickharvie','DavidCoburnUKip','willie_rennie','RuthDavidsonMSP','jeremycorbyn','theresa_may','timfarron','paulnuttallukip'],
+    "data": [
+    [{'minute':1, 'value':10},{'minute': 1, 'value':10},{'minute': 2, 'value':10},{'minute': 3, 'value':10},{'minute': 4, 'value':10},{'minute': 5, 'value':10},{'minute': 6, 'value':10},{'minute': 7, 'value':10}],
+    [{'minute': 1, 'value':10},{'minute': 1, 'value':10},{'minute': 2, 'value':10},{'minute': 3, 'value':10},{'minute': 4, 'value':10},{'minute': 5, 'value':10},{'minute': 6, 'value':10},{'minute': 7, 'value':10}],
+    [{'minute': 1, 'value':10},{'minute': 1, 'value':10},{'minute': 2, 'value':10},{'minute': 3, 'value':10},{'minute': 4, 'value':10},{'minute': 5, 'value':10},{'minute': 6, 'value':10},{'minute': 7, 'value':10}],
+    [{'minute': 1, 'value':10},{'minute': 1, 'value':10},{'minute': 2, 'value':10},{'minute': 3, 'value':10},{'minute': 4, 'value':10},{'minute': 5, 'value':10},{'minute': 6, 'value':10},{'minute': 7, 'value':10}],
+    [{'minute': 1, 'value':10},{'minute': 1, 'value':10},{'minute': 2, 'value':10},{'minute': 3, 'value':10},{'minute': 4, 'value':10},{'minute': 5, 'value':10},{'minute': 6, 'value':10},{'minute': 7, 'value':10}],
+    [{'minute': 1, 'value':10},{'minute': 1, 'value':10},{'minute': 2, 'value':10},{'minute': 3, 'value':10},{'minute': 4, 'value':10},{'minute': 5, 'value':10},{'minute': 6, 'value':10},{'minute': 7, 'value':10}],
+    [{'minute': 1, 'value':10},{'minute': 1, 'value':10},{'minute': 2, 'value':10},{'minute': 3, 'value':10},{'minute': 4, 'value':10},{'minute': 5, 'value':10},{'minute': 6, 'value':10},{'minute': 7, 'value':10}],
+    [{'minute': 1, 'value':10},{'minute': 1, 'value':10},{'minute': 2, 'value':10},{'minute': 3, 'value':10},{'minute': 4, 'value':10},{'minute': 5, 'value':10},{'minute': 6, 'value':10},{'minute': 7, 'value':10}],
+    [{'minute': 1, 'value':10},{'minute': 1, 'value':10},{'minute': 2, 'value':10},{'minute': 3, 'value':10},{'minute': 4, 'value':10},{'minute': 5, 'value':10},{'minute': 6, 'value':10},{'minute': 7, 'value':10}],
+    [{'minute': 1, 'value':10},{'minute': 1, 'value':10},{'minute': 2, 'value':10},{'minute': 3, 'value':10},{'minute': 4, 'value':10},{'minute': 5, 'value':10},{'minute': 6, 'value':10},{'minute': 7, 'value':10}],
+    [{'minute': 1, 'value':10},{'minute': 1, 'value':10},{'minute': 2, 'value':10},{'minute': 3, 'value':10},{'minute': 4, 'value':10},{'minute': 5, 'value':10},{'minute': 6, 'value':10},{'minute': 7, 'value':10}]
+    ],
+    "trackingtag": 'ge17'
+}

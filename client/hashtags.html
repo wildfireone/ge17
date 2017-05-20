@@ -1,0 +1,80 @@
+<!--
+@Author: John Isaacs <john>
+@Date:   13-May-172017
+@Filename: hashtags.html
+@Last modified by:   john
+@Last modified time: 20-May-172017
+-->
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Not Found</title>
+    <meta charset="UTF-8">
+    <script src='./js/jquery.min.js'></script>
+    <script src='./js/d3.min.js'></script>
+    <script src='./js/metricsgraphics.min.js'></script>
+    <link href='./css/metricsgraphics.css' rel='stylesheet' type='text/css'>
+    <link href='./css/override.css' rel='stylesheet' type='text/css'>
+    <style>
+
+    </style>
+    <script>
+        function generateGraph() {
+            d3.json('http://localhost:9090/hashdata', function(data) {
+                //modify away!
+                //console.log(data);
+                MG.data_graphic({
+                    title: "Hashtags " + data.trackingtag,
+                    description: "test",
+                    data: data.data,
+                    legend: data.labels,
+                    width: 800,
+                    height: 700,
+                    target: "#tags",
+                    x_accessor: "minute",
+                    y_accessor: "value",
+                    y_extended_ticks: true,
+                    aggregate_rollover: true,
+                    full_width: true,
+                    legend_target: '.legend'
+                });
+
+                MG.data_graphic({
+                    title: "Total Tweets " + data.trackingtag,
+                    description: "test",
+                    data: data.trackingtotals,
+                    width: 800,
+                    height: 700,
+                    target: "#totals",
+                    x_accessor: "minute",
+                    y_accessor: "value",
+                    y_extended_ticks: true,
+                    full_width: true
+                });
+
+            });
+
+        }
+        $(".mg-line1").click(function(){
+          console.log("hello");
+        });
+
+        generateGraph();
+        setInterval(function() {
+            generateGraph()
+        }, 60000)
+    </script>
+</head>
+
+<body>
+    <div id="tags">
+    </div>
+    <div id="totals">
+    </div>
+</body>
+
+</html>

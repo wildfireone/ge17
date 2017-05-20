@@ -1,0 +1,195 @@
+/**
+* @Author: John Isaacs <john>
+* @Date:   20-May-172017
+* @Filename: leaders.css
+* @Last modified by:   john
+* @Last modified time: 20-May-172017
+*/
+
+/*'NicolaSturgeon','RuthDavidsonMSP', 'kezdugdale','willie_rennie','patrickharvie','DavidCoburnUKip','theresa_may','jeremycorbyn','timfarron','paulnuttallukip'*/
+
+
+.mg-line1{
+    stroke: #cccc00;
+
+
+}
+
+
+
+.mg-line2{
+    stroke: blue;
+}
+
+
+
+.mg-line3 {
+    stroke: red;
+}
+
+
+.mg-line4 {
+    stroke: orange;
+}
+
+
+
+.mg-line5 {
+    stroke: green;
+}
+
+
+
+.mg-line6 {
+    stroke: purple;
+}
+
+
+
+.mg-line7 {
+    stroke: #9999ff;
+
+}
+
+
+
+.mg-line8 {
+  stroke: #ffb3b3;
+}
+
+.mg-line9{
+    stroke: #ffdb99;
+}
+
+
+
+.mg-line10 {
+  stroke: #ff99ff;
+}
+
+
+.mg-line1-legend-color {
+    color: #cccc00;
+    fill: #cccc00;
+}
+
+.mg-line2-legend-color {
+  color: blue;
+  fill: blue;
+}
+
+.mg-line3-legend-color {
+  color: red;
+  fill: red;
+}
+
+.mg-line4-legend-color {
+  color: orange;
+  fill: orange;
+}
+
+.mg-line5-legend-color {
+  color: green;
+  fill: green;
+}
+
+.mg-line6-legend-color {
+  color: purple;
+  fill: purple;
+}
+
+.mg-line7-legend-color {
+  color: #9999ff;
+  fill: #9999ff;
+}
+
+.mg-line8-legend-color {
+  color: #ffb3b3;
+  fill: #ffb3b3;
+}
+
+.mg-line9-legend-color {
+  color: orange;
+  fill: orange;
+  opacity: 0.7;
+}
+
+.mg-line10-legend-color {
+  color: purple;
+  fill: purple;
+  opacity: 0.7;
+}
+
+.mg-voronoi path {
+  fill: none;
+  pointer-events: all;
+  stroke: none;
+  stroke-opacity: 1;
+}
+
+.mg-main-line {
+    stroke-width: 2 px;
+}
+
+path.mg-main-line {
+    fill: none;
+    opacity: 0.8;
+    stroke-width: 5 px;
+}
+
+.mg-hover-line1-color {
+    fill: #cccc00;
+}
+
+
+
+.mg-hover-line2-color {
+    fill: blue;
+}
+
+
+
+.mg-hover-line3-color {
+    fill: red
+}
+
+
+.mg-hover-line4-color {
+    fill: orange;
+}
+
+
+
+.mg-hover-line5-color {
+    fill: green;
+}
+
+
+
+.mg-hover-line6-color {
+    fill: purple;
+}
+
+
+
+.mg-hover-line7-color {
+    fill: #9999ff;
+}
+
+
+
+.mg-hover-line8-color {
+    fill: #ffb3b3;
+}
+
+
+
+.mg-hover-line9-color {
+    fill: #ffdb99;
+}
+
+
+
+.mg-hover-line10-color {
+    fill: #ff99ff;
+}

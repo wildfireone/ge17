@@ -1,0 +1,111 @@
+/**
+* @Author: John Isaacs <john>
+* @Date:   20-May-172017
+* @Filename: override.css
+* @Last modified by:   john
+* @Last modified time: 20-May-172017
+*/
+
+
+
+.mg-voronoi path {
+    fill: none;
+    pointer-events: all;
+    stroke: none;
+    stroke-opacity: 0.1;
+}
+.mg-main-line {
+    stroke: gray;
+    fill: gray;
+}
+.mg-main-line :hover {
+    stroke: red;
+    fill: red;
+}
+
+path.mg-main-line {
+    fill: none;
+    opacity: 0.8;
+    stroke-width: 1.1px;
+}
+
+#tags {
+    width: 95%;
+    margins: auto;
+}
+#totals {
+    width: 95%;
+    margins: auto;
+}
+
+
+.mg-hover-main-line {
+    stroke-width: 5 px;
+    fill: grey;
+}
+.mg-hover-line1-color {
+  fill: black;
+  stroke: black;
+}
+
+
+
+.mg-hover-line2-color {
+  fill: black;
+  stroke: black;
+}
+
+
+
+.mg-hover-line3-color {
+  fill: black;
+  stroke: black;
+}
+
+
+.mg-hover-line4-color {
+  fill: black;
+  stroke: black;
+}
+
+
+
+.mg-hover-line5-color {
+  fill: black;
+  stroke: black;
+}
+
+
+
+.mg-hover-line6-color {
+  fill: black;
+  stroke: black;
+}
+
+
+
+.mg-hover-line7-color {
+  fill: black;
+  stroke: black;
+}
+
+
+
+.mg-hover-line8-color {
+    ffill: black;
+    stroke: black;
+}
+
+
+
+.mg-hover-line9-color {
+  fill: black;
+  stroke: black;
+}
+
+
+
+.mg-hover-line10-color {
+  fill: black;
+  stroke: black;
+}
