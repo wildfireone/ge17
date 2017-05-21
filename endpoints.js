@@ -113,7 +113,7 @@ var servePage = function(response, page) {
 
     });
 }
-var lastvalues = [];
+
 
 
 //peaks chart for mentions
@@ -128,6 +128,7 @@ var getMentions2 = function(response) {
         });
         var collection = db.collection(prefix + 'debatementioncounts');
         collection.find().toArray(function(err, documents) {
+          var lastvalues = [];
             //console.log("prefix + 'debatementioncounts' " + JSON.stringify(documents));
             for (var i = 1; i < documents.length; i++) {
 
@@ -135,6 +136,7 @@ var getMentions2 = function(response) {
 
                 if(!data[index]){var dataline = []; data[index] = dataline;}
                 var val = documents[i].count
+                //getLastValue(data[index],documents[i].minute);
                 if(lastvalues[index]){ val = documents[i].count - lastvalues[index];}
                 lastvalues[index] = documents[i].count;
                     data[index].push({
