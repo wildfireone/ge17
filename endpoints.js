@@ -16,14 +16,14 @@ var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var ObjectId = require('mongodb').ObjectID;
 var mongoURL = 'mongodb://localhost:27017/tweets';
-var prefix = "livetest";
+var prefix = "livetest2";
 var trackingtag = 'LeadersDebate';
 
 
 
 //request handeler for routes
 const requestHandler = (request, response) => {
-    console.log(request.url)
+    console.log(request)
     if (request.url == "/hashdata") {
         getHashtags2(response);
 
@@ -319,7 +319,7 @@ var getHashtags = function(response) {
                     "message": "no data refresh"
                 };
             }
-            console.log(JSON.stringify(jsonresponse));
+            //console.log(JSON.stringify(jsonresponse));
             response.write(JSON.stringify(jsonresponse));
             response.end();
             db.close();

@@ -15,7 +15,7 @@ var counter = 0;
 var hashcounter = require('./hashcounter');
 var mentioncounter = require('./mentioncounter');
 //var endpoints = require('./endpoints');
-var debateprefix = "livetest";
+var debateprefix = "livetest2";
 var trackingtag = 'LeadersDebate';
 
 var client = new Twitter({
