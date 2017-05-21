@@ -2,8 +2,8 @@
  * @Author: John Isaacs <john>
  * @Date:   24-Apr-172017
  * @Filename: textserver.js
-* @Last modified by:   john
-* @Last modified time: 21-May-172017
+ * @Last modified by:   john
+ * @Last modified time: 21-May-172017
  */
 
 
@@ -16,10 +16,8 @@ var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var ObjectId = require('mongodb').ObjectID;
 var mongoURL = 'mongodb://localhost:27017/tweets';
-var prefix = "livetest2";
+var prefix = "debate_sun21_";
 var trackingtag = 'LeadersDebate';
-
-
 
 //request handeler for routes
 const requestHandler = (request, response) => {
