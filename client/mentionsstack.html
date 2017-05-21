@@ -25,11 +25,11 @@
     <script>
 
         function generateGraph(){
-            d3.json('http://188.166.165.168/mentiondata', function(data) {
+            d3.json('http://188.166.165.168/mentiondatas', function(data) {
                 //modify away!
                 //console.log(data);
                 MG.data_graphic({
-                    title: "Mentions under #" + data.trackingtag,
+                    title: "Mentions totals under #" + data.trackingtag,
                     description: "test",
                     data: data.data,
                     legend: data.labels,
@@ -54,14 +54,6 @@
 </head>
 
 <body>
-  <nav id="menu">
-      <ul>
-          <li><a href="/mentions"> Leader Mentions </a></li>
-          <li><a href="/hashtags"> Debate hashtags </a> </li>
-          <li><a href="/mentionsstacked"> Leader Mentions (stacking) </a> </li>
-          <li><a href="/hashtagsstacked"> Debate Hashtags (stacking) </a> </li>
-      </ul>
-  </nav>
     <div id="mentions">
 
 

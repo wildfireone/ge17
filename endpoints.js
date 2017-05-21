@@ -10,7 +10,7 @@
 
 // content of index.js
 const http = require('http');
-const port = 9090;
+const port = 80;
 const fs = require('fs');
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
@@ -28,7 +28,13 @@ const requestHandler = (request, response) => {
         getHashtags2(response);
 
     } else if (request.url == "/mentiondata") {
+        getMentions2(response);
+
+    }  else if (request.url == "/mentiondatas") {
         getMentions(response);
+
+    }  else if (request.url == "/hashdatas") {
+        getHashtags(response);
 
     } else if (request.url == "/hashtags") {
         servePage(response, "client/hashtags.html")
@@ -104,8 +110,8 @@ var servePage = function(response, page) {
 var lastvalues = [];
 
 
-
-var getMentions = function(response) {
+//peaks chart for mentions
+var getMentions2 = function(response) {
     MongoClient.connect(mongoURL, function(err, db) {
         assert.equal(null, err);
         var labels = ['NicolaSturgeon','RuthDavidsonMSP', 'kezdugdale','willie_rennie','patrickharvie','DavidCoburnUKip','theresa_may','jeremycorbyn','timfarron','paulnuttallukip'];
@@ -167,6 +173,69 @@ var getMentions = function(response) {
     });
 
 }
+//stacking charts for mentions
+var getMentions = function(response) {
+    MongoClient.connect(mongoURL, function(err, db) {
+        assert.equal(null, err);
+        var labels = ['NicolaSturgeon','RuthDavidsonMSP', 'kezdugdale','willie_rennie','patrickharvie','DavidCoburnUKip','theresa_may','jeremycorbyn','timfarron','paulnuttallukip'];
+        var data = [];
+
+        response.writeHeader(200, {
+            "Content-Type": "application/json"
+        });
+        var collection = db.collection(prefix + 'debatementioncounts');
+        collection.find().toArray(function(err, documents) {
+            //console.log("prefix + 'debatementioncounts' " + JSON.stringify(documents));
+            for (var i = 1; i < documents.length; i++) {
+
+                var index = labels.indexOf(documents[i].account);
+
+                if(!data[index]){var dataline = []; data[index] = dataline;}
+                var val = documents[i].count
+                //if(lastvalues[index]){ val = documents[i].count - lastvalues[index];}
+                //lastvalues[index] = documents[i].count;
+                    data[index].push({
+                        "minute": documents[i].minute,
+                        "value": val
+                    });
+
+                  }
+                // } else {
+                //     labels.push(documents[i].account);
+                //     index = labels.indexOf(documents[i].account);
+                //     var dataline = [];
+                //     data[index] = dataline;
+                //     data[index].push({
+                //         "minute": documents[i].minute,
+                //         "value": documents[i].count,
+                //     });
+                // }
+
+
+            var jsonresponse;
+            try {
+                jsonresponse = {
+                    "labels": labels,
+                    "data": data,
+                    "trackingtag": trackingtag
+                }
+
+            } catch (err) {
+                jsonresponse = {
+                    "error": err,
+                    "message": "no data refresh"
+                };
+            }
+
+            //console.log(JSON.stringify(jsonresponse));
+            response.write(JSON.stringify(jsonresponse));
+            response.end();
+            db.close();
+
+        });
+    });
+
+}
 
 var getLastValue = function(data,minute){
 
@@ -182,7 +251,7 @@ var ret =0;
   }
   return ret;
 }
-
+//stacking chart for hashtags
 var getHashtags = function(response) {
     MongoClient.connect(mongoURL, function(err, db) {
         assert.equal(null, err);
@@ -253,6 +322,7 @@ var getHashtags = function(response) {
     });
 
 }
+//peaks chart for hashtags
 var getHashtags2 = function(response) {
     MongoClient.connect(mongoURL, function(err, db) {
         assert.equal(null, err);

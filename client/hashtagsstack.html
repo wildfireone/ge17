@@ -25,11 +25,11 @@
     </style>
     <script>
         function generateGraph() {
-            d3.json('http://188.166.165.168/hashdata', function(data) {
+            d3.json('http://188.166.165.168/hashdatas', function(data) {
                 //modify away!
                 //console.log(data);
                 MG.data_graphic({
-                    title: "Hashtags #" + data.trackingtag,
+                    title: "Hashtags Totals #" + data.trackingtag,
                     description: "test",
                     data: data.data,
                     legend: data.labels,
