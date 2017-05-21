@@ -36,7 +36,13 @@ const requestHandler = (request, response) => {
     }  else if (request.url == "/hashdatas") {
         getHashtags(response);
 
-    } else if (request.url == "/hashtags") {
+    } else if (request.url == "/hashtagsstacked") {
+        servePage(response, "client/hashtagsstack.html")
+
+    }else if (request.url == "/mentionsstacked") {
+        servePage(response, "client/mentionsstack.html")
+
+    }else if (request.url == "/hashtags") {
         servePage(response, "client/hashtags.html")
 
     }else if (request.url == "/mentions") {
