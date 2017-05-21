@@ -29,6 +29,57 @@
 
         function generateGraph(){
             d3.json('http://188.166.165.168/mentiondata', function(data) {
+
+              var markers = [{
+                'minute': 10,
+                'label': 'Sturgeon - SNP strengthen scotland & single market'
+              }, {
+                'minute': 17,
+                'label': 'Dugdale  -labour only party to take on torys'
+              }, {
+                'minute': 19,
+                'label': 'Public Question about brexit'
+              }, {
+                'minute': 28,
+                'label': 'Discussion around 2nd Referendum'
+              }, {
+                'minute': 31,
+                'label': 'Davidson - Sturgeon promised it wuld be once'
+              }, {
+                'minute': 35,
+                'label': 'Nurse 1st apperance'
+              }
+              , {
+                'minute': 46,
+                'label': 'Education questions'
+              }
+              , {
+                'minute': 49,
+                'label': 'Sturgeon - education response'
+              }
+              , {
+                'minute': 52,
+                'label': 'Davidson - education'
+              }
+              , {
+                'minute': 53,
+                'label': 'PQ - primary pupils failing'
+              }, {
+                'minute': 54,
+                'label': 'PQ - Tuition fees '
+              }, {
+                'minute': 55,
+                'label': 'PQ - Maintenance grants?'
+              }, {
+                'minute': 56,
+                'label': 'Harvie - response to fees and education'
+              }, {
+                'minute': 68,
+                'label': 'Nurse (again) and public sector payment'
+              }, {
+                'minute': 77,
+                'label': 'debate finishes'
+              }];
                 //modify away!
                 //console.log(data);
                 MG.data_graphic({
@@ -41,6 +92,7 @@
                     target: "#mentions",
                     x_accessor: "minute",
                     y_accessor: "value",
+                    markers:markers,
                     y_extended_ticks: true,
                     aggregate_rollover: true,
                     full_width: true,
