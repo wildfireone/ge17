@@ -3,7 +3,7 @@
  * @Date:   24-Apr-172017
  * @Filename: textserver.js
  * @Last modified by:   john
- * @Last modified time: 21-May-172017
+ * @Last modified time: 22-May-172017
  */
 
 
@@ -45,6 +45,10 @@ const requestHandler = (request, response) => {
 
     }else if (request.url == "/mentions") {
         servePage(response, "client/mentions.html")
+
+    }
+    else if (request.url == "/mentionsclean") {
+        servePage(response, "client/mentions-debaters.html")
 
     }
      else {
