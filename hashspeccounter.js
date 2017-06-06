@@ -79,7 +79,7 @@ tags.forEach(function(tag){
 
 }
 
-var insertDocument = function(minute,account,count) {
+var insertDocument = function(minute,tag,count) {
   var now = new Date();
   var realtime  = date.format(now, 'YYYY/MM/DD HH:mm:ss');
 
