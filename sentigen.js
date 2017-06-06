@@ -85,17 +85,7 @@ var insertDocument = function(scores) {
     db.collection(prefix + 'currentsentiment').update({
       name: "currentsentiment"
     }, {
-      name: "currentsentiment",
-      $inc: { NS: scores[1] },
-      $inc: { RD: scores[2] },
-      $inc: { KD: scores[3] },
-      $inc: { PH: scores[4] },
-      $inc: { WR: scores[5] },
-      $inc: { DC: scores[6] },
-      $inc: { TM: scores[7] },
-      $inc: { JC: scores[8] },
-      $inc: { TF: scores[9] },
-      $inc: { PN: scores[10] }
+      $inc: { NS: scores[1], RD: scores[2], KD: scores[3] ,PH: scores[4] , WR: scores[5] , DC: scores[6] ,TM: scores[7] ,JC: scores[8] ,TF: scores[9], PN: scores[10] }
     }, {
       upsert: true
     }, function(err, result) {
