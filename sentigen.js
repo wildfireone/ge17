@@ -60,7 +60,7 @@ var checkTweet = function(tweet) {
         if (currentscore == 0) {
           console.log("running sentiment");
           currentscore = sentiment(tweet.text);
-          console.log("done " + currentscore.Score);
+          console.log("done " + JSON.stringify(currentscore));
         }
         scores[i] == currentscore.Score;
       }
