@@ -84,7 +84,7 @@ var insertDocument = function(minute,sentimentdata) {
   var data = {'minute':minute,'data':sentimentdata, 'realtime': realtime};
     db.collection(prefix +'sentimentcountscounts').insertOne( data, function(err, result) {
       assert.equal(err, null);
-      console.log(data.semtimentdata);
+      console.log(data.sentimentdata);
       db.close();
     });
   });
