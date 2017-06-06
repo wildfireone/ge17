@@ -19,7 +19,7 @@ var hashspeccounter = require('./hashspeccounter');
 var sentimentcounter = require('./sentimentcounter');
 var sentigen = require('./sentigen');
 //var endpoints = require('./endpoints');
-var debateprefix = "debate_test_tuesday6";
+var debateprefix = "debate_final_tuesday6";
 var trackingtag = 'ScotDebates';
 
 var client = new Twitter({
@@ -37,7 +37,7 @@ var config =
   'assert':assert,
   'date':date,
   'track':trackingtag,
-  'delay':10000
+  'delay':60000
 
 }
 hashcounter.start(config);

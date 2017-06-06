@@ -22,7 +22,7 @@ var minutecounter =0;
 //    "nuttal":
 //}
 
-var tags = ['NHS','Brexit','Indyref2','VoteSNP'];
+var tags = ['NHS','Brexit','Indyref2','VoteSNP', 'VoteLabour', "VoteConservative", "SNPout", "ToriesOut", "manchester", "london"];
 
 module.exports = {
   start: function (config) {
