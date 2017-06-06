@@ -470,6 +470,7 @@ var getSentiment2 = function(response) {
           if(!data[j]){var dataline = []; data[j] = dataline;}
         }
         if(!lastvaluesSent){
+          lastvaluesSent = [];
           for(var idx=0; idx<10; idx++){
             lastvaluesSent[idx] = 0;
           }
