@@ -63,12 +63,12 @@ var findTags = function(minute,db, callback) {
   // Find some documents
 //console.log(accounts);
 var closecount =0;
-accounts.forEach(function(tag){
+tags.forEach(function(tag){
   collection.find({ 'entities.hashtags': { $elemMatch: { text: { $regex : tag , $options : 'i' } } } }).count(function(err, count){
     //console.log(account+":"+count);
-    insertDocument(minute,account,count);
+    insertDocument(minute,tag,count);
     closecount++;
-    if(closecount >= accounts.length){
+    if(closecount >= tags.length){
       db.close();
     }
   });

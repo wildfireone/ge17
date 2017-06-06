@@ -137,7 +137,7 @@ var servePage = function(response, page) {
 var getSpecificHashtags = function(response) {
     MongoClient.connect(mongoURL, function(err, db) {
         assert.equal(null, err);
-        var tags = ['#NHS','#Brexit','#Indyref2'];
+        var labels = ['#NHS','#Brexit','#Indyref2'];
         var data = [];
 
         response.writeHeader(200, {
@@ -149,7 +149,7 @@ var getSpecificHashtags = function(response) {
             //console.log("prefix + 'debatementioncounts' " + JSON.stringify(documents));
             for (var i = 1; i < documents.length; i++) {
 
-                var index = labels.indexOf(documents[i].account);
+                var index = labels.indexOf(documents[i].hashtag);
 
                 if(!data[index]){var dataline = []; data[index] = dataline;}
                 var val = documents[i].count
