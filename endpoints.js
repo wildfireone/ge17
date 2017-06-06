@@ -3,7 +3,7 @@
  * @Date:   24-Apr-172017
  * @Filename: textserver.js
  * @Last modified by:   john
- * @Last modified time: 22-May-172017
+ * @Last modified time: 06-Jun-172017
  */
 
 
@@ -16,8 +16,11 @@ var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var ObjectId = require('mongodb').ObjectID;
 var mongoURL = 'mongodb://localhost:27017/tweets';
-var prefix = "debate_sun21_";
-var trackingtag = 'LeadersDebate';
+
+
+var debateprefix = "debate_test";
+var debate = debateprefix;
+var trackingtag = 'ge17';
 
 //request handeler for routes
 const requestHandler = (request, response) => {
@@ -34,7 +37,14 @@ const requestHandler = (request, response) => {
     }  else if (request.url == "/hashdatas") {
         getHashtags(response);
 
-    } else if (request.url == "/hashtagsstacked") {
+    }
+    else if (request.url == "/hashdataspec") {
+        getSpecificHashtags(response);
+
+    }else if (request.url == "/hashdataspecific") {
+        servePage(response, "client/hashtagsspec.html")
+
+    }else if (request.url == "/hashtagsstacked") {
         servePage(response, "client/hashtagsstack.html")
 
     }else if (request.url == "/mentionsstacked") {
@@ -47,6 +57,7 @@ const requestHandler = (request, response) => {
         servePage(response, "client/mentions.html")
 
     }
+
     else if (request.url == "/mentionsclean") {
         servePage(response, "client/mentions-debaters.html")
 
@@ -87,6 +98,10 @@ var serveStatic = function(response, page) {
                     response.writeHead(200, {
                         "Content-Type": "text/javascript"
                     });
+                } else if (page.split('.').pop() == "html") {
+                    response.writeHead(200, {
+                        "Content-Type": "text/html"
+                    });
                 } else {
                     response.writeHead(200, {
                         "Content-Type": "text/plain"
@@ -117,6 +132,72 @@ var servePage = function(response, page) {
 }
 
 
+
+//peaks chart for mentions
+var getSpecificHashtags = function(response) {
+    MongoClient.connect(mongoURL, function(err, db) {
+        assert.equal(null, err);
+        var tags = ['#NHS','#Brexit','#Indyref2'];
+        var data = [];
+
+        response.writeHeader(200, {
+            "Content-Type": "application/json"
+        });
+        var collection = db.collection(prefix + 'debatespectagcounts');
+        collection.find().toArray(function(err, documents) {
+          var lastvalues = [];
+            //console.log("prefix + 'debatementioncounts' " + JSON.stringify(documents));
+            for (var i = 1; i < documents.length; i++) {
+
+                var index = labels.indexOf(documents[i].account);
+
+                if(!data[index]){var dataline = []; data[index] = dataline;}
+                var val = documents[i].count
+                //getLastValue(data[index],documents[i].minute);
+                if(lastvalues[index]){ val = documents[i].count - lastvalues[index];}
+                lastvalues[index] = documents[i].count;
+                    data[index].push({
+                        "minute": documents[i].minute,
+                        "value": val
+                    });
+
+                  }
+                // } else {
+                //     labels.push(documents[i].account);
+                //     index = labels.indexOf(documents[i].account);
+                //     var dataline = [];
+                //     data[index] = dataline;
+                //     data[index].push({
+                //         "minute": documents[i].minute,
+                //         "value": documents[i].count,
+                //     });
+                // }
+
+
+            var jsonresponse;
+            try {
+                jsonresponse = {
+                    "labels": labels,
+                    "data": data,
+                    "trackingtag": trackingtag
+                }
+
+            } catch (err) {
+                jsonresponse = {
+                    "error": err,
+                    "message": "no data refresh"
+                };
+            }
+
+            //console.log(JSON.stringify(jsonresponse));
+            response.write(JSON.stringify(jsonresponse));
+            response.end();
+            db.close();
+
+        });
+    });
+
+}
 
 //peaks chart for mentions
 var getMentions2 = function(response) {

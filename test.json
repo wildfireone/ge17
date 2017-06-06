@@ -1,0 +1,15 @@
+db.test36ge17.aggregate(
+ { "$project": {
+      "y":{"$year":"$created_at"},
+      "m":{"$month":"$created_at"},
+      "d":{"$dayOfMonth":"$created_at"},
+      "h":{"$hour":"$created_at"},
+"m":{"$minute":"$created_at"},
+
+      "tweet":1 }
+ },
+ { "$group":{
+       "_id": { "year":"$y","month":"$m","day":"$d","hour":"$h","minute":"$m"},
+       "total":{ "$sum": "$tweet"}
+   }
+ });

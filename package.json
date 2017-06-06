@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/wildfireone/ge17/issues"
   },
-  "homepage": "https://github.com/wildfireone/ge17#readme"
+  "homepage": "https://github.com/wildfireone/ge17#readme",
+  "dependencies": {
+    "date-and-time": "^0.4.0"
+  }
 }

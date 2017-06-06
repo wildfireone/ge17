@@ -18,7 +18,7 @@
     <script src='./js/d3.min.js'></script>
     <script src='./js/metricsgraphics.min.js'></script>
     <link href='./css/metricsgraphics.css' rel='stylesheet' type='text/css'>
-    <link href='./css/leaders.css' rel='stylesheet' type='text/css'>
+    <link href='./css/override.css' rel='stylesheet' type='text/css'>
     <link href='./css/common.css' rel='stylesheet' type='text/css'>
     <script src='./js/mg_line_brushing.js'></script>
     <link rel='stylesheet' href='./css/mg_line_brushing.css' />
@@ -27,11 +27,11 @@
     </style>
     <script>
         function generateGraph() {
-            d3.json('http://188.166.165.168/hashdatas', function(data) {
+            d3.json('http://188.166.165.168/hashdataspec', function(data) {
                 //modify away!
                 //console.log(data);
                 MG.data_graphic({
-                    title: "Hashtags Totals #" + data.trackingtag,
+                    title: "Hashtags #" + data.trackingtag,
                     description: "test",
                     data: data.data,
                     legend: data.labels,
@@ -46,25 +46,9 @@
                     legend_target: '.legend'
                 });
 
-                MG.data_graphic({
-                    title: "Total tweets under #" + data.trackingtag,
-                    description: "test",
-                    data: data.trackingtotals,
-                    width: 800,
-                    height: 700,
-                    target: "#totals",
-                    x_accessor: "minute",
-                    y_accessor: "value",
-                    y_extended_ticks: true,
-                    full_width: true
-                });
-
             });
 
         }
-        $(".mg-line1").click(function() {
-            console.log("hello");
-        });
 
         generateGraph();
         setInterval(function() {

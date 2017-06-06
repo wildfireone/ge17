@@ -15,7 +15,7 @@
     <script src='./js/d3.min.js'></script>
     <script src='./js/metricsgraphics.min.js'></script>
     <link href='./css/metricsgraphics.css' rel='stylesheet' type='text/css'>
-    <link href='./css/leaders-debaters.css' rel='stylesheet' type='text/css'>
+    <link href='./css/leaders.css' rel='stylesheet' type='text/css'>
     <link href='./css/common.css' rel='stylesheet' type='text/css'>
     <script src='./js/mg_line_brushing.js'></script>
     <link rel='stylesheet' href='./css/mg_line_brushing.css' />
@@ -86,10 +86,9 @@
                     title: "Mentions under #" + data.trackingtag,
                     description: "test",
                     data: data.data,
-                    legend: ['NicolaSturgeon','RuthDavidsonMSP', 'kezdugdale','willie_rennie','patrickharvie','DavidCoburnUKip'],
+                    legend: data.labels,
                     width: 800,
                     height: 700,
-                    max_data_size:6,
                     target: "#mentions",
                     x_accessor: "minute",
                     y_accessor: "value",

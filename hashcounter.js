@@ -59,7 +59,9 @@ var findHashtags = function(minute,db, callback) {
 }
 
 var insertDocument = function(minute,db, docs, callback) {
-  var data = {'minute':minute, 'counts':docs};
+  var now = new Date();
+  var realtime  = date.format(now, 'YYYY/MM/DD HH:mm:ss');
+  var data = {'minute':minute, 'counts':docs, 'realtime':realtime};
     db.collection(prefix +'debatehashcounts').insertOne( data, function(err, result) {
       assert.equal(err, null);
       //console.log("Inserted a document into the tweets collection.");

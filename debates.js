@@ -2,21 +2,23 @@
 * @Author: John Isaacs <john>
 * @Date:   12-May-172017
 * @Filename: debates.js
-* @Last modified by:   john
-* @Last modified time: 21-May-172017
+ * @Last modified by:   john
+ * @Last modified time: 06-Jun-172017
 */
 
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var ObjectId = require('mongodb').ObjectID;
+var date = require('date-and-time');
 var mongoURL = 'mongodb://localhost:27017/tweets';
 var Twitter = require('twitter');
 var counter = 0;
 var hashcounter = require('./hashcounter');
 var mentioncounter = require('./mentioncounter');
+var hashspeccounter = require('./hashspeccounter');
 //var endpoints = require('./endpoints');
-var debateprefix = "debate_sun21_";
-var trackingtag = 'LeadersDebate';
+var debateprefix = "debate_test";
+var trackingtag = 'ge17';
 
 var client = new Twitter({
   consumer_key: 'TC98w89JxQK2v4vPEqLLxJLx0',
@@ -37,6 +39,7 @@ var config =
 }
 hashcounter.start(config);
 mentioncounter.start(config);
+hashspeccounter.start(config);
 //endpoints.start(config);
 
 

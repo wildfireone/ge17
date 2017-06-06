@@ -22,7 +22,7 @@ var minutecounter =0;
 //    "nuttal":
 //}
 
-var accounts = ['NicolaSturgeon','RuthDavidsonMSP', 'kezdugdale','willie_rennie','patrickharvie','DavidCoburnUKip','theresa_may','jeremycorbyn','timfarron','paulnuttallukip'];
+var tags = ['#NHS','#Brexit','#Indyref2'];
 
 module.exports = {
   start: function (config) {
@@ -56,15 +56,15 @@ minutecounter++;
 }
 
 
-var findMentions = function(minute,db, callback) {
+var findTags = function(minute,db, callback) {
   // Get the documents collection
   console.log(prefix+'ge17');
   var collection = db.collection(prefix+'ge17');
   // Find some documents
 //console.log(accounts);
 var closecount =0;
-accounts.forEach(function(account){
-  collection.find({ 'entities.user_mentions': { $elemMatch: { screen_name: account } } }).count(function(err, count){
+accounts.forEach(function(tag){
+  collection.find({ 'entities.hashtags': { $elemMatch: { text: { $regex : tag , $options : 'i' } } } }).count(function(err, count){
     //console.log(account+":"+count);
     insertDocument(minute,account,count);
     closecount++;
@@ -83,8 +83,8 @@ var insertDocument = function(minute,account,count) {
   var realtime  = date.format(now, 'YYYY/MM/DD HH:mm:ss');
 
   MongoClient.connect(mongoURL, function(err, db) {
-  var data = {'minute':minute,'account':account, 'count':count, 'realtime': realtime};
-    db.collection(prefix +'debatementioncounts').insertOne( data, function(err, result) {
+  var data = {'minute':minute,'hashtag':tag, 'count':count, 'realtime': realtime};
+    db.collection(prefix +'debatespectagcounts').insertOne( data, function(err, result) {
       assert.equal(err, null);
       //console.log("Inserted a document into the tweets collection.");
       db.close();
