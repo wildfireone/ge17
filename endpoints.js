@@ -42,12 +42,19 @@ const requestHandler = (request, response) => {
         getSentiment(response);
 
     }
+    else if (request.url == "/sentimentnonstack") {
+        getSentiment2(response);
+
+    }
     else if (request.url == "/hashdataspec") {
         getSpecificHashtags(response);
 
     }
     else if (request.url == "/sentimentstack") {
         servePage(response, "client/sentimentstack.html")
+
+    }else if (request.url == "/sentimentns") {
+        servePage(response, "client/sentimentnonstack.html")
 
     }else if (request.url == "/hashdataspecific") {
         servePage(response, "client/hashtagsspec.html")
@@ -410,6 +417,130 @@ var getSentiment = function(response) {
                         "value": documents[i].data.PN,
                         "realtime": documents[i].realtime
                     });
+
+                  }
+                // } else {
+                //     labels.push(documents[i].account);
+                //     index = labels.indexOf(documents[i].account);
+                //     var dataline = [];
+                //     data[index] = dataline;
+                //     data[index].push({
+                //         "minute": documents[i].minute,
+                //         "value": documents[i].count,
+                //     });
+                // }
+
+
+            var jsonresponse;
+            try {
+                jsonresponse = {
+                    "labels": labels,
+                    "data": data,
+                    "trackingtag": trackingtag
+                }
+
+            } catch (err) {
+                jsonresponse = {
+                    "error": err,
+                    "message": "no data refresh"
+                };
+            }
+
+            //console.log(JSON.stringify(jsonresponse));
+            response.write(JSON.stringify(jsonresponse));
+            response.end();
+            db.close();
+
+        });
+    });
+
+}
+var lastvaluesSent;
+var getSentiment2 = function(response) {
+    MongoClient.connect(mongoURL, function(err, db) {
+        assert.equal(null, err);
+        var labels = ['NicolaSturgeon','RuthDavidsonMSP', 'kezdugdale','willie_rennie','patrickharvie','DavidCoburnUKip','theresa_may','jeremycorbyn','timfarron','paulnuttallukip'];
+        var data = [];
+
+        response.writeHeader(200, {
+            "Content-Type": "application/json"
+        });
+        var collection = db.collection(prefix + 'sentimentcounts');
+        for (var j = 0; j< 10;j++){
+          if(!data[j]){var dataline = []; data[j] = dataline;}
+        }
+        if(!lastvaluesSent){
+          for(var idx=0; idx<10; idx++){
+            lastvaluesSent[idx] = 0;
+          }
+        }
+        collection.find().toArray(function(err, documents) {
+            //console.log("prefix + 'debatementioncounts' " + JSON.stringify(documents));
+            for (var i = 0; i < documents.length; i++) {
+              //"NS":6,"RD":0,"KD":0,"PH":0,"WR":0,"DC":0,"TM":0,"JC":0,"TF":0,"PN":0
+
+                //if(lastvalues[index]){ val = documents[i].count - lastvalues[index];}
+                //lastvalues[index] = documents[i].count;
+                    data[0].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].data.NS,
+                        "realtime": documents[i].realtime
+                    });
+                    lastvaluesSent[0] = documents[i].data.NS;
+                    data[1].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].data.RD,
+                        "realtime": documents[i].realtime
+                    });
+                    lastvaluesSent[1] = documents[i].data.RD;
+                    data[2].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].data.KD,
+                        "realtime": documents[i].realtime
+                    });
+                    lastvaluesSent[2] = documents[i].data.KD;
+                    data[3].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].data.WR,
+                        "realtime": documents[i].realtime
+                    });
+                    lastvaluesSent[3] = documents[i].data.WR;
+                    data[4].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].data.PH,
+                        "realtime": documents[i].realtime
+                    });
+                    lastvaluesSent[4] = documents[i].data.PH;
+                    data[5].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].data.DC,
+                        "realtime": documents[i].realtime
+                    });
+                    lastvaluesSent[5] = documents[i].data.DC;
+                    data[6].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].data.TM,
+                        "realtime": documents[i].realtime
+                    });
+                    lastvaluesSent[6] = documents[i].data.TM;
+                    data[7].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].data.JC,
+                        "realtime": documents[i].realtime
+                    });
+                    lastvaluesSent[7] = documents[i].data.JC;
+                    data[8].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].data.TF,
+                        "realtime": documents[i].realtime
+                    });
+                    lastvaluesSent[8] = documents[i].data.TF;
+                    data[9].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].data.PN,
+                        "realtime": documents[i].realtime
+                    });
+                    lastvaluesSent[9] = documents[i].data.PN;
 
                   }
                 // } else {
