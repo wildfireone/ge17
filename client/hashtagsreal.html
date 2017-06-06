@@ -30,6 +30,7 @@
             d3.json('http://188.166.165.168/hashdata', function(data) {
                 //modify away!
                 //console.log(data);
+                data = MG.convert.date(data, 'realtime');
                 MG.data_graphic({
                     title: "Hashtags #" + data.trackingtag,
                     description: "test",
@@ -38,7 +39,7 @@
                     width: 800,
                     height: 700,
                     target: "#tags",
-                    x_accessor: "minute",
+                    x_accessor: "realtime",
                     y_accessor: "value",
                     y_extended_ticks: true,
                     aggregate_rollover: true,
@@ -53,7 +54,7 @@
                     width: 800,
                     height: 700,
                     target: "#totals",
-                    x_accessor: "realtime",
+                    x_accessor: "minute",
                     y_accessor: "value",
                     y_extended_ticks: true,
                     full_width: true
