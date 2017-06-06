@@ -484,61 +484,61 @@ var getSentiment2 = function(response) {
                 //lastvalues[index] = documents[i].count;
                     data[0].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.NS,
+                        "value": documents[i].data.NS-lastvaluesSent[0],
                         "realtime": documents[i].realtime
                     });
                     lastvaluesSent[0] = documents[i].data.NS;
                     data[1].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.RD,
+                        "value": documents[i].data.RD-lastvaluesSent[1],
                         "realtime": documents[i].realtime
                     });
                     lastvaluesSent[1] = documents[i].data.RD;
                     data[2].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.KD,
+                        "value": documents[i].data.KD-lastvaluesSent[2],
                         "realtime": documents[i].realtime
                     });
                     lastvaluesSent[2] = documents[i].data.KD;
                     data[3].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.WR,
+                        "value": documents[i].data.WR-lastvaluesSent[3],
                         "realtime": documents[i].realtime
                     });
                     lastvaluesSent[3] = documents[i].data.WR;
                     data[4].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.PH,
+                        "value": documents[i].data.PH-lastvaluesSent[4],
                         "realtime": documents[i].realtime
                     });
                     lastvaluesSent[4] = documents[i].data.PH;
                     data[5].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.DC,
+                        "value": documents[i].data.DC-lastvaluesSent[5],
                         "realtime": documents[i].realtime
                     });
                     lastvaluesSent[5] = documents[i].data.DC;
                     data[6].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.TM,
+                        "value": documents[i].data.TM-lastvaluesSent[6],
                         "realtime": documents[i].realtime
                     });
                     lastvaluesSent[6] = documents[i].data.TM;
                     data[7].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.JC,
+                        "value": documents[i].data.JC-lastvaluesSent[7],
                         "realtime": documents[i].realtime
                     });
                     lastvaluesSent[7] = documents[i].data.JC;
                     data[8].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.TF,
+                        "value": documents[i].data.TF-lastvaluesSent[8],
                         "realtime": documents[i].realtime
                     });
                     lastvaluesSent[8] = documents[i].data.TF;
                     data[9].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.PN,
+                        "value": documents[i].data.PN-lastvaluesSent[9],
                         "realtime": documents[i].realtime
                     });
                     lastvaluesSent[9] = documents[i].data.PN;
