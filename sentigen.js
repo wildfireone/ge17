@@ -63,9 +63,9 @@ var checkTweet = function(tweet) {
       if (tweet.entities.user_mentions[j].screen_name == accounts[i]) {
         flag = true;
         if (currentscore == 0) {
-          console.log("running sentiment");
+          //console.log("running sentiment");
           currentscore = sentiment(tweet.text).score;
-          console.log("done " + JSON.stringify(currentscore));
+          //console.log("done " + JSON.stringify(currentscore));
         }
         scores[i] = currentscore;
       }
@@ -73,7 +73,7 @@ var checkTweet = function(tweet) {
   }
 
   if (flag) {
-    console.log(scores);
+    //console.log(scores);
     insertDocument(scores);
   }
 }
