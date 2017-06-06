@@ -67,7 +67,7 @@ var checkTweet = function(tweet) {
     }
   }
 for(var k=0; k<scores.length;scores++){
-  if(!scores[k] || scores[k] =='null' ){ scores[k]== 0};
+  if(!scores[k] || scores[k] == null ){ scores[k]== 0};
 }
 
   insertDocument(scores);
