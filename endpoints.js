@@ -38,6 +38,10 @@ const requestHandler = (request, response) => {
         getHashtags(response);
 
     }
+    else if (request.url == "/sentiment") {
+        getSentiment(response);
+
+    }
     else if (request.url == "/hashdataspec") {
         getSpecificHashtags(response);
 
@@ -290,6 +294,112 @@ var getMentions = function(response) {
                     data[index].push({
                         "minute": documents[i].minute,
                         "value": val,
+                        "realtime": documents[i].realtime
+                    });
+
+                  }
+                // } else {
+                //     labels.push(documents[i].account);
+                //     index = labels.indexOf(documents[i].account);
+                //     var dataline = [];
+                //     data[index] = dataline;
+                //     data[index].push({
+                //         "minute": documents[i].minute,
+                //         "value": documents[i].count,
+                //     });
+                // }
+
+
+            var jsonresponse;
+            try {
+                jsonresponse = {
+                    "labels": labels,
+                    "data": data,
+                    "trackingtag": trackingtag
+                }
+
+            } catch (err) {
+                jsonresponse = {
+                    "error": err,
+                    "message": "no data refresh"
+                };
+            }
+
+            //console.log(JSON.stringify(jsonresponse));
+            response.write(JSON.stringify(jsonresponse));
+            response.end();
+            db.close();
+
+        });
+    });
+
+}
+
+var getSentiment = function(response) {
+    MongoClient.connect(mongoURL, function(err, db) {
+        assert.equal(null, err);
+        var labels = ['NicolaSturgeon','RuthDavidsonMSP', 'kezdugdale','willie_rennie','patrickharvie','DavidCoburnUKip','theresa_may','jeremycorbyn','timfarron','paulnuttallukip'];
+        var data = [];
+
+        response.writeHeader(200, {
+            "Content-Type": "application/json"
+        });
+        var collection = db.collection(prefix + 'debatementioncounts');
+        collection.find().toArray(function(err, documents) {
+            //console.log("prefix + 'debatementioncounts' " + JSON.stringify(documents));
+            for (var i = 1; i < documents.length; i++) {
+
+                if(!data[i]){var dataline = []; data[i] = dataline;}
+                //if(lastvalues[index]){ val = documents[i].count - lastvalues[index];}
+                //lastvalues[index] = documents[i].count;
+                    data[i].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].NS,
+                        "realtime": documents[i].realtime
+                    });
+                    data[i].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].RD,
+                        "realtime": documents[i].realtime
+                    });
+                    data[i].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].KD,
+                        "realtime": documents[i].realtime
+                    });
+                    data[i].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].WR,
+                        "realtime": documents[i].realtime
+                    });
+                    data[i].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].PH,
+                        "realtime": documents[i].realtime
+                    });
+                    data[i].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].DC,
+                        "realtime": documents[i].realtime
+                    });
+                    data[i].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].TM,
+                        "realtime": documents[i].realtime
+                    });
+                    data[i].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].JC,
+                        "realtime": documents[i].realtime
+                    });
+                    data[i].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].TF,
+                        "realtime": documents[i].realtime
+                    });
+                    data[i].push({
+                        "minute": documents[i].minute,
+                        "value": documents[i].PN,
                         "realtime": documents[i].realtime
                     });
 

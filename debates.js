@@ -43,8 +43,13 @@ var config =
 hashcounter.start(config);
 mentioncounter.start(config);
 hashspeccounter.start(config);
+try{
 sentimentcounter.start(config);
 sentigen.start(config);
+}
+catch(err){
+  console.log(err);
+}
 //endpoints.start(config);
 
 
