@@ -27,7 +27,7 @@
     </style>
     <script>
         function generateGraph() {
-            d3.json('http://188.166.165.168/hashdataspec', function(data) {
+            d3.json('http://188.166.165.168/hashdata', function(data) {
                 //modify away!
                 //console.log(data);
                 MG.data_graphic({
@@ -46,9 +46,25 @@
                     legend_target: '.legend'
                 });
 
+                MG.data_graphic({
+                    title: "Total tweets under #" + data.trackingtag,
+                    description: "test",
+                    data: data.trackingtotals,
+                    width: 800,
+                    height: 700,
+                    target: "#totals",
+                    x_accessor: "realtime",
+                    y_accessor: "value",
+                    y_extended_ticks: true,
+                    full_width: true
+                });
+
             });
 
         }
+        $(".mg-line1").click(function() {
+            console.log("hello");
+        });
 
         generateGraph();
         setInterval(function() {

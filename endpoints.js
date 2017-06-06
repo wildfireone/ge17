@@ -45,6 +45,10 @@ const requestHandler = (request, response) => {
     else if (request.url == "/hashdataspec") {
         getSpecificHashtags(response);
 
+    }
+    else if (request.url == "/sentimentstack") {
+        servePage(response, "client/sentimentstack.html")
+
     }else if (request.url == "/hashdataspecific") {
         servePage(response, "client/hashtagsspec.html")
 
