@@ -82,7 +82,7 @@ var insertDocument = function(minute,sentimentdata) {
 
   MongoClient.connect(mongoURL, function(err, db) {
   var data = {'minute':minute,'data':sentimentdata, 'realtime': realtime};
-    db.collection(prefix +'sentimentcountscounts').insertOne( data, function(err, result) {
+    db.collection(prefix +'sentimentcounts').insertOne( data, function(err, result) {
       assert.equal(err, null);
       console.log(data.data);
       db.close();
