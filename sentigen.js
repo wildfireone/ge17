@@ -19,7 +19,9 @@ module.exports = {
     // call the rest of the code and have it execute after 3 seconds
     console.log("Sentiment started");
   },
-  checkTweet: checkTweet
+  checkTweet: function(tweet){
+    checkTweet(tweet);
+  }
 };
 
 var accounts = ['NicolaSturgeon', 'RuthDavidsonMSP', 'kezdugdale', 'willie_rennie', 'patrickharvie', 'DavidCoburnUKip', 'theresa_may', 'jeremycorbyn', 'timfarron', 'paulnuttallukip'];
