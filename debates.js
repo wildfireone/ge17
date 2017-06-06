@@ -46,7 +46,6 @@ hashspeccounter.start(config);
 client.stream('statuses/filter', {track: trackingtag},  function(stream){
 
   stream.on('data', function(tweet) {
-    console.log(tweet);
     MongoClient.connect(mongoURL, function(err, db) {
       assert.equal(null, err);
       insertDocument(db,tweet, function() {
