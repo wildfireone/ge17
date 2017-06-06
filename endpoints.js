@@ -472,16 +472,16 @@ var getHashtags = function(response) {
                 for (var j = 0; j < documents[i].counts.length; j++) {
                     //console.log(documents[i].counts[j]["_id"]);
                     if (documents[i].counts[j]["_id"].toLowerCase() == trackingtag.toLowerCase()) {
-                        if (trackingtotals.length < i) {
+                        //if (trackingtotals.length < i) {
                             trackingtotals.push({
                                 "minute": i,
                                 "value": documents[i].counts[j]["tagCount"],
                                 "realtime": documents[i].realtime
                             });
-                        }
+                        //}
                     }
                     //ignore list
-                    else if(documents[i].counts[j]["_id"].toLowerCase() == 'ge2017')
+                    else if(documents[i].counts[j]["_id"].toLowerCase() == 'ge2017'||documents[i].counts[j]["_id"].toLowerCase() == 'ge17')
                     {
 
                     }
@@ -552,7 +552,7 @@ var getHashtags2 = function(response) {
                 for (var j = 0; j < documents[i].counts.length; j++) {
                     //console.log(documents[i].counts[j]["_id"]);
                     if (documents[i].counts[j]["_id"].toLowerCase() == trackingtag.toLowerCase()) {
-                        if (trackingtotals.length < i) {
+                        //if (trackingtotals.length < i) {
                             var value;
                             if (documents[i - 1].counts[j]) {
                                 value = documents[i].counts[j]["tagCount"] - documents[i - 1].counts[j]["tagCount"];
@@ -564,8 +564,8 @@ var getHashtags2 = function(response) {
                                 "value": value,
                                 "realtime": documents[i].realtime
                             });
-                        }
-                    }else if(documents[i].counts[j]["_id"].toLowerCase() == 'ge2017'){
+                        //}
+                    }else if(documents[i].counts[j]["_id"].toLowerCase() == 'ge2017'||documents[i].counts[j]["_id"].toLowerCase() == 'ge17'){
 
                     } else {
                         var index = labels.indexOf(documents[i].counts[j]["_id"]);

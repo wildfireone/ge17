@@ -62,7 +62,7 @@ client.stream('statuses/filter', {track: trackingtag},  function(stream){
     }
 
     //console.log(t)
-    console.log(tweet);
+    //console.log(tweet);
     MongoClient.connect(mongoURL, function(err, db) {
       assert.equal(null, err);
       insertDocument(db,tweet, function() {
