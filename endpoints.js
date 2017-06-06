@@ -351,7 +351,7 @@ var getSentiment = function(response) {
         var collection = db.collection(prefix + 'sentimentcounts');
         collection.find().toArray(function(err, documents) {
             //console.log("prefix + 'debatementioncounts' " + JSON.stringify(documents));
-            for (var i = 1; i < documents.length; i++) {
+            for (var i = 0; i < documents.length; i++) {
               //"NS":6,"RD":0,"KD":0,"PH":0,"WR":0,"DC":0,"TM":0,"JC":0,"TF":0,"PN":0
                 if(!data[i]){var dataline = []; data[i] = dataline;}
                 //if(lastvalues[index]){ val = documents[i].count - lastvalues[index];}

@@ -67,7 +67,9 @@ var closecount =0;
 
   collection.findOne(function(err,data){
     assert.equal(err, null);
-    insertDocument(minute,data);
+    if(data){
+      insertDocument(minute,data);
+    }
   });
 
 
