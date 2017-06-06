@@ -53,13 +53,15 @@ var accounts = ['NicolaSturgeon', 'RuthDavidsonMSP', 'kezdugdale', 'willie_renni
 var checkTweet = function(tweet) {
   var currentscore = 0;
   var scores = [10];
-  for(var k=0; k<scores.length;k++){
+  for (var k = 0; k < scores.length; k++) {
     scores[k] = 0;
   }
-
+  var flag = false;
   for (var j = 0; j < tweet.entities.user_mentions.length; j++) {
     for (var i = 0; i < accounts.length; i++) {
+
       if (tweet.entities.user_mentions[j].screen_name == accounts[i]) {
+        flag = true;
         if (currentscore == 0) {
           console.log("running sentiment");
           currentscore = sentiment(tweet.text).score;
@@ -70,8 +72,10 @@ var checkTweet = function(tweet) {
     }
   }
 
-
-  insertDocument(scores);
+  if (flag) {
+    console.log(scores);
+    insertDocument(scores);
+  }
 }
 
 
@@ -86,7 +90,18 @@ var insertDocument = function(scores) {
     db.collection(prefix + 'currentsentiment').update({
       name: "currentsentiment"
     }, {
-      $inc: { NS: scores[1], RD: scores[2], KD: scores[3] ,PH: scores[4] , WR: scores[5] , DC: scores[6] ,TM: scores[7] ,JC: scores[8] ,TF: scores[9], PN: scores[10] }
+      $inc: {
+        NS: scores[1],
+        RD: scores[2],
+        KD: scores[3],
+        PH: scores[4],
+        WR: scores[5],
+        DC: scores[6],
+        TM: scores[7],
+        JC: scores[8],
+        TF: scores[9],
+        PN: scores[10]
+      }
     }, {
       upsert: true
     }, function(err, result) {
