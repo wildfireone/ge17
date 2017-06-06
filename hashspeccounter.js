@@ -65,7 +65,7 @@ var findTags = function(minute,db, callback) {
 //console.log(accounts);
 var closecount =0;
 tags.forEach(function(tag){
-  collection.find({ 'entities.hashtags': { $elemMatch: { text: { $regex : tag , $options : 'i' } } } }).count(function(err, count){
+  collection.find({ 'entities.hashtags': { $elemMatch: { text: '/^'+tag+'$/i' } } }).count(function(err, count){
     //console.log(account+":"+count);
     insertDocument(minute,tag,count);
     closecount++;
