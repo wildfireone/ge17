@@ -1,0 +1,76 @@
+<!--
+@Author: John Isaacs <john>
+@Date:   13-May-172017
+@Filename: hashtags.html
+@Last modified by:   john
+@Last modified time: 21-May-172017
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Leaders Debates tracker</title>
+    <meta charset="UTF-8">
+    <script src='./js/jquery.min.js'></script>
+    <script src='./js/d3.min.js'></script>
+    <script src='./js/metricsgraphics.min.js'></script>
+    <link href='./css/metricsgraphics.css' rel='stylesheet' type='text/css'>
+    <link href='./css/leaders.css' rel='stylesheet' type='text/css'>
+    <link href='./css/common.css' rel='stylesheet' type='text/css'>
+    <script src='./js/mg_line_brushing.js'></script>
+    <link rel='stylesheet' href='./css/mg_line_brushing.css' />
+    <style>
+        #tags {
+            width: 90%;
+            margins: auto;
+        }
+    </style>
+    <script>
+
+        function generateGraph(){
+            d3.json('http://188.166.165.168/mentiondatas', function(data) {
+                //modify away!
+                //console.log(data);
+                MG.data_graphic({
+                    title: "Mentions totals under #" + data.trackingtag,
+                    description: "test",
+                    data: data.data,
+                    legend: data.labels,
+                    width: 800,
+                    height: 700,
+                    target: "#mentions",
+                    x_accessor: "minute",
+                    y_accessor: "value",
+                    y_extended_ticks: true,
+                    aggregate_rollover: true,
+                    full_width: true,
+                    legend_target: '#legend'
+                });
+
+
+            });
+
+        }
+        generateGraph();
+        setInterval(function(){generateGraph()}, 60000)
+    </script>
+</head>
+
+<body>
+  <nav id="menu">
+      <ul>
+          <li><a href="/mentions"> Leader Mentions </a></li>
+          <li><a href="/hashtags"> Debate hashtags </a> </li>
+          <li><a href="/mentionsstacked"> Leader Mentions (stacking) </a> </li>
+          <li><a href="/hashtagsstacked"> Debate Hashtags (stacking) </a> </li>
+          <li><a href="/hashdataspecific"> Specific Tracked Tags </a> </li>
+      </ul>
+  </nav>
+    <div id="mentions">
+
+
+    </div>
+    <div id="legend">
+</body>
+
+</html>

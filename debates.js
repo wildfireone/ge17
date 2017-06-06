@@ -20,7 +20,7 @@ var sentimentcounter = require('./sentimentcounter');
 var sentigen = require('./sentigen');
 //var endpoints = require('./endpoints');
 var debateprefix = "debate_testF";
-var trackingtag = 'scotdebates';
+var trackingtag = 'ScotDebates';
 
 var client = new Twitter({
   consumer_key: 'r6zyjOV2sWUGYwbmLLL1GxCKl',

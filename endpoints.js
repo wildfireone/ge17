@@ -20,7 +20,7 @@ var mongoURL = 'mongodb://localhost:27017/tweets';
 
 var debateprefix = "debate_testF";
 var prefix = debateprefix;
-var trackingtag = 'scotdebates';
+var trackingtag = 'ScotDebates';
 
 //request handeler for routes
 const requestHandler = (request, response) => {
