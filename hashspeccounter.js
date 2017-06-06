@@ -3,7 +3,7 @@
 * @Date:   12-May-172017
 * @Filename: hashcounter.js
  * @Last modified by:   john
- * @Last modified time: 22-May-172017
+ * @Last modified time: 06-Jun-172017
 */
 
 var minutecounter =0;
@@ -46,7 +46,7 @@ minutecounter++;
   MongoClient.connect(mongoURL, function(err, db) {
     assert.equal(null, err);
     console.log("Connected correctly to server");
-      findMentions(minutecounter, db, function(minute) {
+      findTags(minutecounter, db, function(minute) {
         //db.close();
         //console.log("added at "+minute);
       });
