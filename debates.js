@@ -41,12 +41,14 @@ var config =
 hashcounter.start(config);
 mentioncounter.start(config);
 hashspeccounter.start(config);
+sentimentcounter.start(config);
 //endpoints.start(config);
 
 
 client.stream('statuses/filter', {track: trackingtag},  function(stream){
 
   stream.on('data', function(tweet) {
+
     //console.log(t)
     MongoClient.connect(mongoURL, function(err, db) {
       assert.equal(null, err);
