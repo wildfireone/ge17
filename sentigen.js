@@ -53,6 +53,9 @@ var accounts = ['NicolaSturgeon', 'RuthDavidsonMSP', 'kezdugdale', 'willie_renni
 var checkTweet = function(tweet) {
   var currentscore = 0;
   var scores = [10];
+  for(var k=0; k<scores.length;k++){
+    scores[k] = 0;
+  }
 
   for (var j = 0; j < tweet.entities.user_mentions.length; j++) {
     for (var i = 0; i < accounts.length; i++) {
@@ -66,9 +69,7 @@ var checkTweet = function(tweet) {
       }
     }
   }
-for(var k=0; k<scores.length;k++){
-  if(!scores[k] || scores[k] == null ){ scores[k]== 0};
-}
+
 
   insertDocument(scores);
 }
