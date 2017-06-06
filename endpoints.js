@@ -137,7 +137,7 @@ var servePage = function(response, page) {
 var getSpecificHashtags = function(response) {
     MongoClient.connect(mongoURL, function(err, db) {
         assert.equal(null, err);
-        var labels = ['#NHS','#Brexit','#Indyref2'];
+        var labels = ['NHS','Brexit','Indyref2','VoteSNP'];
         var data = [];
 
         response.writeHeader(200, {
