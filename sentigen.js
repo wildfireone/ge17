@@ -31,8 +31,7 @@ var checkTweet = function(tweet) {
   var currentscore = 0;
   var scores = [];
   for (var j = 0; j < tweet.entities.user_mentions.length; j++) {
-    console.log(tweet.entities.user_mentions[j].user_name);
-    if (accounts.indexOf(tweet.entities.user_mentions[j].user_name) > -1) {
+    if (accounts.indexOf(tweet.entities.user_mentions[j].screen_name) > -1) {
 
       if (currentscore == 0) {
         console.log("running sentiment");
