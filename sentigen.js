@@ -53,7 +53,7 @@ var accounts = ['NicolaSturgeon', 'RuthDavidsonMSP', 'kezdugdale', 'willie_renni
 var checkTweet = function(tweet) {
   var currentscore = 0;
   var scores = [10];
-  for (var k = 0; k < scores.length; k++) {
+  for (var k = 0; k < 10; k++) {
     scores[k] = 0;
   }
   var flag = false;
