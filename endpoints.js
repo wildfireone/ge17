@@ -18,7 +18,7 @@ var ObjectId = require('mongodb').ObjectID;
 var mongoURL = 'mongodb://localhost:27017/tweets';
 
 
-var debateprefix = "debate_test3";
+var debateprefix = "debate_test4";
 var prefix = debateprefix;
 var trackingtag = 'ge17';
 
@@ -158,7 +158,8 @@ var getSpecificHashtags = function(response) {
                 lastvalues[index] = documents[i].count;
                     data[index].push({
                         "minute": documents[i].minute,
-                        "value": val
+                        "value": val,
+                        "realtime": documents[i].realtime
                     });
 
                   }
@@ -224,7 +225,8 @@ var getMentions2 = function(response) {
                 lastvalues[index] = documents[i].count;
                     data[index].push({
                         "minute": documents[i].minute,
-                        "value": val
+                        "value": val,
+                        "realtime": documents[i].realtime
                     });
 
                   }
@@ -287,7 +289,8 @@ var getMentions = function(response) {
                 //lastvalues[index] = documents[i].count;
                     data[index].push({
                         "minute": documents[i].minute,
-                        "value": val
+                        "value": val,
+                        "realtime": documents[i].realtime
                     });
 
                   }
@@ -362,7 +365,8 @@ var getHashtags = function(response) {
                         if (trackingtotals.length < i) {
                             trackingtotals.push({
                                 "minute": i,
-                                "value": documents[i].counts[j]["tagCount"]
+                                "value": documents[i].counts[j]["tagCount"],
+                                "realtime": documents[i].realtime
                             });
                         }
                     } else {
@@ -370,7 +374,8 @@ var getHashtags = function(response) {
                         if (index > -1) {
                             data[index].push({
                                 "minute": i,
-                                "value": documents[i].counts[j]["tagCount"]
+                                "value": documents[i].counts[j]["tagCount"],
+                                "realtime": documents[i].realtime
                             });
                         } else {
                             labels.push(documents[i].counts[j]["_id"]);
@@ -379,7 +384,8 @@ var getHashtags = function(response) {
                             data[index] = dataline;
                             data[index].push({
                                 "minute": i,
-                                "value": documents[i].counts[j]["tagCount"]
+                                "value": documents[i].counts[j]["tagCount"],
+                                "realtime": documents[i].realtime
                             });
                         }
                     }
@@ -439,7 +445,8 @@ var getHashtags2 = function(response) {
                             }
                             trackingtotals.push({
                                 "minute": i,
-                                "value": value
+                                "value": value,
+                                "realtime": documents[i].realtime
                             });
                         }
                     } else {
@@ -453,7 +460,8 @@ var getHashtags2 = function(response) {
                             }
                             data[index].push({
                                 "minute": i,
-                                "value": value
+                                "value": value,
+                                "realtime": documents[i].realtime
                             });
                         } else {
                             labels.push(documents[i].counts[j]["_id"]);
@@ -469,7 +477,8 @@ var getHashtags2 = function(response) {
                             }
                             data[index].push({
                                 "minute": i,
-                                "value": value
+                                "value": value,
+                                "realtime": documents[i].realtime
                             });
                         }
                     }
