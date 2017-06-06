@@ -66,7 +66,7 @@ var checkTweet = function(tweet) {
       }
     }
   }
-for(var k=0; k<scores.length;scores++){
+for(var k=0; k<scores.length;k++){
   if(!scores[k] || scores[k] == null ){ scores[k]== 0};
 }
 
