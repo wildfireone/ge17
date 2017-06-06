@@ -455,6 +455,8 @@ var getHashtags2 = function(response) {
                                 "realtime": documents[i].realtime
                             });
                         }
+                    }else if(documents[i].counts[j]["_id"].toLowerCase() == 'ge2017'){
+
                     } else {
                         var index = labels.indexOf(documents[i].counts[j]["_id"]);
                         if (index > -1) {
