@@ -62,7 +62,7 @@ var checkTweet = function(tweet) {
           currentscore = sentiment(tweet.text).score;
           console.log("done " + JSON.stringify(currentscore));
         }
-        scores[i] == currentscore;
+        scores[i] = currentscore;
       }
     }
   }
