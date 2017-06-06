@@ -53,9 +53,9 @@ var accounts = ['NicolaSturgeon', 'RuthDavidsonMSP', 'kezdugdale', 'willie_renni
 var checkTweet = function(tweet) {
   var currentscore = 0;
   var scores = [];
+
   for (var j = 0; j < tweet.entities.user_mentions.length; j++) {
     for (var i = 0; i < accounts.length; i++) {
-      scores[i] = 0;
       if (tweet.entities.user_mentions[j].screen_name == accounts[i]) {
         if (currentscore == 0) {
           console.log("running sentiment");
@@ -82,7 +82,7 @@ var insertDocument = function(scores) {
       name: "currentsentiment"
     }, {
       name: "currentsentiment",
-      NS: scores[0],
+      NS: if(scores[0]){scores[0]}else{0};,
       RD: scores[1],
       KD: scores[2],
       PH: scores[3],
