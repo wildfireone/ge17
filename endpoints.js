@@ -348,58 +348,58 @@ var getSentiment = function(response) {
         collection.find().toArray(function(err, documents) {
             //console.log("prefix + 'debatementioncounts' " + JSON.stringify(documents));
             for (var i = 1; i < documents.length; i++) {
-
+              "NS":6,"RD":0,"KD":0,"PH":0,"WR":0,"DC":0,"TM":0,"JC":0,"TF":0,"PN":0
                 if(!data[i]){var dataline = []; data[i] = dataline;}
                 //if(lastvalues[index]){ val = documents[i].count - lastvalues[index];}
                 //lastvalues[index] = documents[i].count;
                     data[i].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.NS,
+                        "value": documents[i].data["NS"],
                         "realtime": documents[i].realtime
                     });
                     data[i].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.RD,
+                        "value": documents[i].data["RD"],
                         "realtime": documents[i].realtime
                     });
                     data[i].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.KD,
+                        "value": documents[i].data["KD"],
                         "realtime": documents[i].realtime
                     });
                     data[i].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.WR,
+                        "value": documents[i].data["WR"],
                         "realtime": documents[i].realtime
                     });
                     data[i].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.PH,
+                        "value": documents[i].data["PH"],
                         "realtime": documents[i].realtime
                     });
                     data[i].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.DC,
+                        "value": documents[i].data["DC"],
                         "realtime": documents[i].realtime
                     });
                     data[i].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.TM,
+                        "value": documents[i].data["TM"],
                         "realtime": documents[i].realtime
                     });
                     data[i].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.JC,
+                        "value": documents[i].data["JC"],
                         "realtime": documents[i].realtime
                     });
                     data[i].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.TF,
+                        "value": documents[i].data["TF"],
                         "realtime": documents[i].realtime
                     });
                     data[i].push({
                         "minute": documents[i].minute,
-                        "value": documents[i].data.PN,
+                        "value": documents[i].data["PN"],
                         "realtime": documents[i].realtime
                     });
 
