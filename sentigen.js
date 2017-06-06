@@ -42,7 +42,7 @@ module.exports = {
       });
     });
   },
-  checkTweet: function(tweet){
+  checkTweet: function(tweet) {
     checkTweet(tweet);
   }
 };
@@ -54,14 +54,16 @@ var checkTweet = function(tweet) {
   var currentscore = 0;
   var scores = [];
   for (var j = 0; j < tweet.entities.user_mentions.length; j++) {
-    if (accounts.indexOf(tweet.entities.user_mentions[j].screen_name) > -1) {
-
-      if (currentscore == 0) {
-        console.log("running sentiment");
-        currentscore = sentiment(tweet.text);
-        console.log("done "+currentscore);
+    for (var i = 0; i < accounts.length; i++) {
+      scores[i] = 0;
+      if (tweet.entities.user_mentions[j].screen_name == accounts[i]) {
+        if (currentscore == 0) {
+          console.log("running sentiment");
+          currentscore = sentiment(tweet.text);
+          console.log("done " + currentscore);
+        }
+        scores[i] == currentscore;
       }
-      scores[i] == currentscore;
     }
   }
   insertDocument(scores);
