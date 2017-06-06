@@ -82,7 +82,7 @@ var insertDocument = function(scores) {
       name: "currentsentiment"
     }, {
       name: "currentsentiment",
-      NS: if(scores[0]){scores[0]}else{0};,
+      NS: scores[0],
       RD: scores[1],
       KD: scores[2],
       PH: scores[3],
