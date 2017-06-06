@@ -59,10 +59,10 @@ var checkTweet = function(tweet) {
       if (tweet.entities.user_mentions[j].screen_name == accounts[i]) {
         if (currentscore == 0) {
           console.log("running sentiment");
-          currentscore = sentiment(tweet.text);
+          currentscore = sentiment(tweet.text).score;
           console.log("done " + JSON.stringify(currentscore));
         }
-        scores[i] == currentscore.Score;
+        scores[i] == currentscore;
       }
     }
   }
