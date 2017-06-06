@@ -18,6 +18,29 @@ module.exports = {
     date = config.date;
     // call the rest of the code and have it execute after 3 seconds
     console.log("Sentiment started");
+    MongoClient.connect(mongoURL, function(err, db) {
+      db.collection(prefix + 'currentsentiment').update({
+        name: "currentsentiment"
+      }, {
+        name: "currentsentiment",
+        NS: 0,
+        RD: 0,
+        KD: 0,
+        PH: 0,
+        WR: 0,
+        DC: 0,
+        TM: 0,
+        JC: 0,
+        TF: 0,
+        PN: 0
+      }, {
+        upsert: true
+      }, function(err, result) {
+        assert.equal(err, null);
+        //console.log("Inserted a document into the tweets collection.");
+        db.close();
+      });
+    });
   },
   checkTweet: function(tweet){
     checkTweet(tweet);

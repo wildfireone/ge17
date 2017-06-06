@@ -19,7 +19,7 @@ var hashspeccounter = require('./hashspeccounter');
 var sentimentcounter = require('./sentimentcounter');
 var sentigen = require('./sentigen');
 //var endpoints = require('./endpoints');
-var debateprefix = "debate_test11";
+var debateprefix = "debate_test12";
 var trackingtag = 'ge17';
 
 var client = new Twitter({
