@@ -16,6 +16,8 @@ var counter = 0;
 var hashcounter = require('./hashcounter');
 var mentioncounter = require('./mentioncounter');
 var hashspeccounter = require('./hashspeccounter');
+var sentimentcounter = require('./sentimentcounter');
+var sentigen = require('./sentigen');
 //var endpoints = require('./endpoints');
 var debateprefix = "debate_test9";
 var trackingtag = 'ge17';
@@ -42,12 +44,17 @@ hashcounter.start(config);
 mentioncounter.start(config);
 hashspeccounter.start(config);
 sentimentcounter.start(config);
+sentigen.start(config);
 //endpoints.start(config);
 
 
 client.stream('statuses/filter', {track: trackingtag},  function(stream){
 
   stream.on('data', function(tweet) {
+    try{sentigen.checkTweet(tweet);}
+    catch (err){
+      console.log(err);
+    }
 
     //console.log(t)
     MongoClient.connect(mongoURL, function(err, db) {

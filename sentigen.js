@@ -18,7 +18,8 @@ module.exports = {
     date = config.date;
     // call the rest of the code and have it execute after 3 seconds
     console.log("Sentiment started");
-  }
+  },
+  checkTweet: checkTweet
 };
 
 var accounts = ['NicolaSturgeon', 'RuthDavidsonMSP', 'kezdugdale', 'willie_rennie', 'patrickharvie', 'DavidCoburnUKip', 'theresa_may', 'jeremycorbyn', 'timfarron', 'paulnuttallukip'];
