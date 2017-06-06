@@ -16,6 +16,7 @@ module.exports = {
     assert = config.assert;
     prefix = config.prefix;
     delay = config.delay;
+    date = config.date;
     // call the rest of the code and have it execute after 3 seconds
     console.log("Hashcounter started");
 

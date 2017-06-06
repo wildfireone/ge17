@@ -3,7 +3,7 @@
 * @Date:   12-May-172017
 * @Filename: hashcounter.js
  * @Last modified by:   john
- * @Last modified time: 22-May-172017
+ * @Last modified time: 06-Jun-172017
 */
 
 var minutecounter =0;
@@ -31,6 +31,7 @@ module.exports = {
     assert = config.assert;
     prefix = config.prefix;
     delay = config.delay;
+    date = config.date;
     // call the rest of the code and have it execute after 3 seconds
     console.log("mentioncounter started");
 

@@ -33,6 +33,7 @@ var config =
   'MongoClient' : MongoClient,
   'mongoURL':mongoURL,
   'assert':assert,
+  'date':date,
   'track':trackingtag,
   'delay':10000
 
