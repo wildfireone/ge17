@@ -34,7 +34,7 @@ var config =
   'mongoURL':mongoURL,
   'assert':assert,
   'track':trackingtag,
-  'delay':60000
+  'delay':10000
 
 }
 hashcounter.start(config);
