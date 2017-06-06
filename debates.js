@@ -17,7 +17,7 @@ var hashcounter = require('./hashcounter');
 var mentioncounter = require('./mentioncounter');
 var hashspeccounter = require('./hashspeccounter');
 //var endpoints = require('./endpoints');
-var debateprefix = "debate_test7";
+var debateprefix = "debate_test8";
 var trackingtag = 'ge17';
 
 var client = new Twitter({
