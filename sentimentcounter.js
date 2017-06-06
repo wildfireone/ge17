@@ -67,7 +67,6 @@ var closecount =0;
 
   collection.findOne(function(err,data){
     assert.equal(err, null);
-    //console.log(account+":"+count);
     insertDocument(minute,data);
   });
 
@@ -84,6 +83,7 @@ var insertDocument = function(minute,sentimentdata) {
   var data = {'minute':minute,'data':sentimentdata, 'realtime': realtime};
     db.collection(prefix +'sentimentcounts').insertOne( data, function(err, result) {
       assert.equal(err, null);
+      console.log(JSON.stringify(data));
       db.close();
     });
   });
