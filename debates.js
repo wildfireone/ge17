@@ -23,7 +23,7 @@ var trackingtag = 'ge17';
 var client = new Twitter({
   consumer_key: 'r6zyjOV2sWUGYwbmLLL1GxCKl',
   consumer_secret: 'RLfja0iZWhuix2C6BZA6PVEi67vgZnCpZwnqLarh4fbSYWyZHW',
-  access_token: '3005928321-kUEn5id86v8lleEtc0iprPUcZVVDdcSVUWdKTlE',
+  access_token_key: '3005928321-kUEn5id86v8lleEtc0iprPUcZVVDdcSVUWdKTlE',
   access_token_secret: '7d9Xy7fSkYvTm90zvUeCuRpEM5X3g7syECGgcLpj0JiRi'
 });
 //start the hashcounter
@@ -47,7 +47,7 @@ hashspeccounter.start(config);
 client.stream('statuses/filter', {track: trackingtag},  function(stream){
 
   stream.on('data', function(tweet) {
-    console.log(tweet);
+    //console.log(t)
     MongoClient.connect(mongoURL, function(err, db) {
       assert.equal(null, err);
       insertDocument(db,tweet, function() {
