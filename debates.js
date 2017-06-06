@@ -21,10 +21,10 @@ var debateprefix = "debate_test6";
 var trackingtag = 'ge17';
 
 var client = new Twitter({
-  consumer_key: 'TC98w89JxQK2v4vPEqLLxJLx0',
-  consumer_secret: 'le4t2JCgoT3CBZwToaKdOJx5LFYDDkGL5e3Pjl2ZtfTqYV46Fs',
-  access_token_key: '4459846396-tU9aYf4E5r9eHhJnniU7OsyrLNJhzEd4cpVeFFe',
-  access_token_secret: 'UaY6kpdXbdV7cAsAxrKLzFTkKSLtW8dcNTe1CYniUl6xM',
+  consumer_key: 'r6zyjOV2sWUGYwbmLLL1GxCKl',
+  consumer_secret: 'RLfja0iZWhuix2C6BZA6PVEi67vgZnCpZwnqLarh4fbSYWyZHW',
+  access_token: '3005928321-kUEn5id86v8lleEtc0iprPUcZVVDdcSVUWdKTlE',
+  access_token_secret: '7d9Xy7fSkYvTm90zvUeCuRpEM5X3g7syECGgcLpj0JiRi'
 });
 //start the hashcounter
 var config =
