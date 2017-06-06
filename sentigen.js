@@ -25,7 +25,7 @@ module.exports = {
 var accounts = ['NicolaSturgeon', 'RuthDavidsonMSP', 'kezdugdale', 'willie_rennie', 'patrickharvie', 'DavidCoburnUKip', 'theresa_may', 'jeremycorbyn', 'timfarron', 'paulnuttallukip'];
 
 
-var checkTweet(tweet) {
+var checkTweet = function(tweet) {
   var currentscore = 0;
   var scores = [];
   for (var j = 0; j < tweet.entities.user_mentions.length; j++) {
