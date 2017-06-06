@@ -52,7 +52,7 @@ var accounts = ['NicolaSturgeon', 'RuthDavidsonMSP', 'kezdugdale', 'willie_renni
 
 var checkTweet = function(tweet) {
   var currentscore = 0;
-  var scores = [];
+  var scores = [10];
 
   for (var j = 0; j < tweet.entities.user_mentions.length; j++) {
     for (var i = 0; i < accounts.length; i++) {
@@ -66,6 +66,10 @@ var checkTweet = function(tweet) {
       }
     }
   }
+for(var k=0; k<scores.length;scores++){
+  if(!scores[k]){ scores[k]== 0};
+}
+
   insertDocument(scores);
 }
 
@@ -82,16 +86,16 @@ var insertDocument = function(scores) {
       name: "currentsentiment"
     }, {
       name: "currentsentiment",
-      NS: scores[0],
-      RD: scores[1],
-      KD: scores[2],
-      PH: scores[3],
-      WR: scores[4],
-      DC: scores[5],
-      TM: scores[6],
-      JC: scores[7],
-      TF: scores[8],
-      PN: scores[9]
+      $inc: { NS: scores[1] },
+      $inc: { RD: scores[2] },
+      $inc: { KD: scores[3] },
+      $inc: { PH: scores[4] },
+      $inc: { WR: scores[5] },
+      $inc: { DC: scores[6] },
+      $inc: { TM: scores[7] },
+      $inc: { JC: scores[8] },
+      $inc: { TF: scores[9] },
+      $inc: { PN: scores[10] }
     }, {
       upsert: true
     }, function(err, result) {
