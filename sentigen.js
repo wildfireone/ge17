@@ -91,16 +91,16 @@ var insertDocument = function(scores) {
       name: "currentsentiment"
     }, {
       $inc: {
-        NS: scores[1],
-        RD: scores[2],
-        KD: scores[3],
-        PH: scores[4],
-        WR: scores[5],
-        DC: scores[6],
-        TM: scores[7],
-        JC: scores[8],
-        TF: scores[9],
-        PN: scores[10]
+        NS: scores[0],
+        RD: scores[1],
+        KD: scores[2],
+        PH: scores[3],
+        WR: scores[4],
+        DC: scores[5],
+        TM: scores[6],
+        JC: scores[7],
+        TF: scores[8],
+        PN: scores[9]
       }
     }, {
       upsert: true
