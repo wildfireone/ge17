@@ -455,7 +455,7 @@ var getSentiment = function(response) {
     });
 
 }
-var lastvaluesSent;
+
 var getSentiment2 = function(response) {
     MongoClient.connect(mongoURL, function(err, db) {
         assert.equal(null, err);
@@ -469,13 +469,12 @@ var getSentiment2 = function(response) {
         for (var j = 0; j< 10;j++){
           if(!data[j]){var dataline = []; data[j] = dataline;}
         }
-        if(!lastvaluesSent){
+        
+        collection.find().toArray(function(err, documents) {
           lastvaluesSent = [];
           for(var idx=0; idx<10; idx++){
             lastvaluesSent[idx] = 0;
           }
-        }
-        collection.find().toArray(function(err, documents) {
             //console.log("prefix + 'debatementioncounts' " + JSON.stringify(documents));
             for (var i = 0; i < documents.length; i++) {
               //"NS":6,"RD":0,"KD":0,"PH":0,"WR":0,"DC":0,"TM":0,"JC":0,"TF":0,"PN":0
