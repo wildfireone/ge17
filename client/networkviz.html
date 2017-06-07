@@ -113,7 +113,7 @@ function generate() {// load graph (nodes,links) json from /graph endpoint
     //d3.jsonp("http://188.166.165.168:5050?callback={callback}&limit=10000", function (graph, error) {
       //d3.jsonp("http://40.68.210.251:5050?callback={callback}&custom=MATCH path = (h:Hashtag)-[r]->(n:Tweet) RETURN path ORDER BY n.created_at DESC LIMIT 1", function (graph, error) {
 
-    d3.jsonp("http://188.166.165.168:5050?callback={callback}&custom=MATCH path = (h:Hashtag)-[tw]->(t:Tweet)<-[me]-(u:User) return path limit 100", function (graph, error) {
+    d3.jsonp("http://188.166.165.168:5050?callback={callback}&custom=MATCH path = (h:Hashtag)-[tw]->(t:Tweet)<-[me]-(u:User) return path", function (graph, error) {
         if (error) {
             console.log(error);
             return;
