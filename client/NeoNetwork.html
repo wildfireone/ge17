@@ -19,8 +19,7 @@
 
 <script type="text/javascript">
 
-var socket = io();
-socket.on('error', console.error.bind(console));
+
 
 
 
@@ -205,9 +204,7 @@ socket.on('error', console.error.bind(console));
          });
      }
 
-  socket.on('neo', function(data) {
-      generate();
-  });
+
 
     var selectedId = -1;
 
@@ -262,7 +259,7 @@ socket.on('error', console.error.bind(console));
         });
     };
 
-
+generate();
 
 
 
