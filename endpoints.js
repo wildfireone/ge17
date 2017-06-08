@@ -229,7 +229,7 @@ var getMentions2 = function(response) {
     collection.find().toArray(function(err, documents) {
       var lastvalues = [];
       //console.log("prefix + 'debatementioncounts' " + JSON.stringify(documents));
-      for (var i = 1; i < documents.length; i++) {
+      for (var i = 2; i < documents.length; i++) {
 
         var index = labels.indexOf(documents[i].account);
 
@@ -299,7 +299,7 @@ var getMentions = function(response) {
     var collection = db.collection(prefix + 'debatementioncounts');
     collection.find().toArray(function(err, documents) {
       //console.log("prefix + 'debatementioncounts' " + JSON.stringify(documents));
-      for (var i = 1; i < documents.length; i++) {
+      for (var i = 2; i < documents.length; i++) {
 
         var index = labels.indexOf(documents[i].account);
 
@@ -373,7 +373,7 @@ var getSentiment = function(response) {
 
     collection.find().toArray(function(err, documents) {
       //console.log("prefix + 'debatementioncounts' " + JSON.stringify(documents));
-      for (var i = 1; i < documents.length; i++) {
+      for (var i = 2; i < documents.length; i++) {
         //"NS":6,"RD":0,"KD":0,"PH":0,"WR":0,"DC":0,"TM":0,"JC":0,"TF":0,"PN":0
 
         //if(lastvalues[index]){ val = documents[i].count - lastvalues[index];}
