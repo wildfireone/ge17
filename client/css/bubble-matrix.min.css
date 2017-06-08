@@ -65,6 +65,11 @@
   text-anchor: end
 }
 
+text .column {
+	transform: rotate(90deg);
+	transform-origin: left top 0;
+}
+
 .d3-tip {
   background: rgba(0, 0, 0, .7);
   border-radius: 20px;
