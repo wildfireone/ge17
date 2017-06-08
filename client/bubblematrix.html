@@ -19,10 +19,15 @@
         var config = {
           // Mandatory need argument root or id
           // root: d3.select('#bubble'),
-          width: 800,
+          //width: 800,
           // {number} height: The height of the canvas, not the matrix.
           height: 600,
           selector: '#bubble',
+          duration: 5000,
+  // {number} maxRadius: The radius of the circles.
+  maxRadius: 10,
+  // {number} maxColors: The numbers of colors to used.
+  maxColors: 6,
           onClick: val => alert(`Value ${val}`)
         };
 
