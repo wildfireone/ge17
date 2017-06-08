@@ -732,7 +732,9 @@ var getHashtags2 = function(response) {
               data[index].push({
                 "minute": i,
                 "value": value,
-                "realtime": documents[i].realtime
+                "realtime": documents[i].realtime.map(function(d) {
+                  d.date = new Date(d.date);
+                });
               });
             } else {
               labels.push(documents[i].counts[j]["_id"]);
@@ -749,7 +751,9 @@ var getHashtags2 = function(response) {
               data[index].push({
                 "minute": i,
                 "value": value,
-                "realtime": documents[i].realtime
+                "realtime": documents[i].realtime.map(function(d) {
+                  d.date = new Date(d.date);
+                });
               });
             }
           }
@@ -785,6 +789,8 @@ var getHashtags2 = function(response) {
   });
 
 }
+
+
 var getHashtagsForMatrix = function(response) {
   MongoClient.connect(mongoURL, function(err, db) {
     assert.equal(null, err);
