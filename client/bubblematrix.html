@@ -1,0 +1,44 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="css/bubble-matrix.min.css">
+</head>
+
+<body>
+  <div id="bubble"></div>
+  <script src="./js/d3/d3.js'"></script>
+  <script src="./js//d3-tip/index.js"></script>
+  <script src="./js/bubble-matrix.min.js"></script>
+  <script>
+    var config = {
+      // Mandatory need argument root or id
+      // root: d3.select('#bubble'),
+      selector: '#bubble',
+      onClick: val => alert(`Value ${val}`)
+    };
+
+    function generateGraph(){
+        d3.json('http://188.166.165.168/mentiondata', function(data) {
+
+
+          var matrix = new BubbleMatrix(config);
+
+          // Draw it.
+          matrix.draw(data);
+
+
+        });
+
+    }
+    generateGraph();
+    setInterval(function(){generateGraph()}, 60000)
+    let matrix = new BubbleMatrix(config);
+
+    // Draw it.
+    matrix.draw(data);
+  </script>
+</body>
+
+</html>

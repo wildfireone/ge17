@@ -3,7 +3,7 @@
  * @Date:   24-Apr-172017
  * @Filename: textserver.js
  * @Last modified by:   john
- * @Last modified time: 06-Jun-172017
+ * @Last modified time: 08-Jun-172017
  */
 
 
@@ -49,6 +49,9 @@ const requestHandler = (request, response) => {
     else if (request.url == "/hashdataspec") {
         getSpecificHashtags(response);
 
+    }
+    else if (request.url == "/getHashtagsForMatrix") {
+        getHashtagsForMatrix(response);
     }
     else if (request.url == "/sentimentstack") {
         servePage(response, "client/sentimentstack.html")
@@ -469,7 +472,7 @@ var getSentiment2 = function(response) {
         for (var j = 0; j< 10;j++){
           if(!data[j]){var dataline = []; data[j] = dataline;}
         }
-        
+
         collection.find().toArray(function(err, documents) {
           lastvaluesSent = [];
           for(var idx=0; idx<10; idx++){
@@ -674,6 +677,8 @@ var getHashtags = function(response) {
     });
 
 }
+
+
 //peaks chart for hashtags
 var getHashtags2 = function(response) {
     MongoClient.connect(mongoURL, function(err, db) {
@@ -771,7 +776,81 @@ var getHashtags2 = function(response) {
     });
 
 }
+var getHashtagsForMatrix = function(response) {
+    MongoClient.connect(mongoURL, function(err, db) {
+        assert.equal(null, err);
+        var labels = [];
+        var rows = [];
+        var columns = [];
+        var trackingtotals = [];
+        response.writeHeader(200, {
+            "Content-Type": "application/json"
+        });
+        var collection = db.collection(prefix + 'debatehashcounts');
+        collection.find().toArray(function(err, documents) {
+            for (var i = 1; i < documents.length; i++) {
+              columns.push[i];
+                for (var j = 0; j < documents[i].counts.length; j++) {
+                    //console.log(documents[i].counts[j]["_id"]);
+                    if (documents[i].counts[j]["_id"].toLowerCase() == trackingtag.toLowerCase()) {
 
+                    }else if(documents[i].counts[j]["_id"].toLowerCase() == 'ge2017'||documents[i].counts[j]["_id"].toLowerCase() == 'ge17'){
+
+                    }else {
+                        var index = labels.indexOf(documents[i].counts[j]["_id"]);
+                        if (index > -1) {
+
+                            var value;
+
+                            if (documents[i - 1].counts[j]) {
+                                value = documents[i].counts[j]["tagCount"] - documents[i - 1].counts[j]["tagCount"];
+                            } else {
+                                value = documents[i].counts[j]["tagCount"];
+                            }
+                            rows[index].values.push(value);
+                        } else {
+                            labels.push(documents[i].counts[j]["_id"]);
+                            index = labels.indexOf(documents[i].counts[j]["_id"]);
+                            var dataline = [];
+                            rows[index].push({name:documents[i].counts[j]["_id"], values:dataline});
+
+                            var value;
+                            if (i > 0 && documents[i - 1].counts[j]) {
+                                value = documents[i].counts[j]["tagCount"] - documents[i - 1].counts[j]["tagCount"];
+                            } else {
+                                value = documents[i].counts[j]["tagCount"];
+                            }
+                            rows[index].values.push(value);
+                        }
+                    }
+                }
+            }
+
+
+            //console.log(labels);
+            //console.log(JSON.stringify(data));
+            var jsonresponse;
+            try {
+                jsonresponse = {
+                    "columns": columns,
+                    "rows": rows
+                }
+
+            } catch (err) {
+                jsonresponse = {
+                    "error": err,
+                    "message": "no data refresh"
+                };
+            }
+            //console.log(JSON.stringify(jsonresponse));
+            response.write(JSON.stringify(jsonresponse));
+            response.end();
+            db.close();
+
+        });
+    });
+
+}
 
 
 var contains = function(needle) {
