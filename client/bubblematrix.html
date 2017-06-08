@@ -33,6 +33,7 @@
     function generateGraph() {
 $('#bubble').empty();
       d3.json('http://188.166.165.168/getHashtagsForMatrix', function(data) {
+        console.log(data);
         var config = {
           // Mandatory need argument root or id
           // root: d3.select('#bubble'),
