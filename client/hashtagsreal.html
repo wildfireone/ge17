@@ -30,7 +30,7 @@
             d3.json('http://188.166.165.168/hashdata', function(data) {
                 //modify away!
                 console.log(data);
-                data = MG.convert.date(data, 'realtime');
+                //data = MG.convert.date(data, 'realtime');
                 MG.data_graphic({
                     title: "Hashtags #" + data.trackingtag,
                     description: "test",
