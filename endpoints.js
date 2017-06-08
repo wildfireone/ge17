@@ -860,7 +860,8 @@ var getHashtagsForMatrix = function(response) {
       try {
         jsonresponse = {
           "columns": columns,
-          "rows": rows
+          "rows": rows,
+          "length":documents.length
         }
 
       } catch (err) {
