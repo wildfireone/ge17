@@ -819,6 +819,9 @@ var getHashtagsForMatrix = function(response) {
               if (value > 0) {
                 rows[index].values[i - 1] = ((value + 1) / 100);
               }
+              else{
+                rows[index].values[i - 1] = null;
+              }
             } else {
               labels.push(documents[i].counts[j]["_id"]);
               index = labels.indexOf(documents[i].counts[j]["_id"]);
@@ -836,6 +839,9 @@ var getHashtagsForMatrix = function(response) {
               }
               if (value > 0) {
                 rows[index].values[i - 1] = ((value + 1) / 100);
+              }
+              else{
+                rows[index].values[i - 1] = null;
               }
             }
           }
