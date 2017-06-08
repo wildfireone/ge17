@@ -807,7 +807,7 @@ var getHashtagsForMatrix = function(response) {
                             } else {
                                 value = documents[i].counts[j]["tagCount"];
                             }
-                            rows[index].values.push(value/100);
+                            rows[index].values.push((value+1)/100);
                         } else {
                             labels.push(documents[i].counts[j]["_id"]);
                             index = labels.indexOf(documents[i].counts[j]["_id"]);
@@ -820,7 +820,7 @@ var getHashtagsForMatrix = function(response) {
                             } else {
                                 value = documents[i].counts[j]["tagCount"];
                             }
-                            rows[index].values.push(value/100);
+                            rows[index].values.push((value+1)/100);
                         }
                     }
                 }
