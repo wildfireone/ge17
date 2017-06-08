@@ -729,12 +729,11 @@ var getHashtags2 = function(response) {
               } else {
                 value = documents[i].counts[j]["tagCount"];
               }
+              var realtime = new Date(documents[i].realtime);
               data[index].push({
                 "minute": i,
                 "value": value,
-                "realtime": documents[i].realtime.map(function(d) {
-                  d.date = new Date(d.date);
-                });
+                "realtime": realtime
               });
             } else {
               labels.push(documents[i].counts[j]["_id"]);
@@ -748,12 +747,12 @@ var getHashtags2 = function(response) {
               } else {
                 value = documents[i].counts[j]["tagCount"];
               }
+              var realtime = new Date(documents[i].realtime);
+
               data[index].push({
                 "minute": i,
                 "value": value,
-                "realtime": documents[i].realtime.map(function(d) {
-                  d.date = new Date(d.date);
-                });
+                "realtime": realtime
               });
             }
           }
