@@ -50,7 +50,7 @@
           hideBottomTitle: true,
           // {number} maxRadius: The radius of the circles.
           maxRadius: 20,
-          onClick: val => alert(`Value ${val}`)
+          tooltip: d3.tip().html(value => 'Value: ' + (value*100)),
         };
 
         var matrix = new BubbleMatrix(config);
