@@ -789,7 +789,7 @@ var getHashtagsForMatrix = function(response) {
         var collection = db.collection(prefix + 'debatehashcounts');
         collection.find().toArray(function(err, documents) {
             for (var i = 1; i < documents.length; i++) {
-              columns.push[i];
+              columns.push(i);
                 for (var j = 0; j < documents[i].counts.length; j++) {
                     //console.log(documents[i].counts[j]["_id"]);
                     if (documents[i].counts[j]["_id"].toLowerCase() == trackingtag.toLowerCase()) {
