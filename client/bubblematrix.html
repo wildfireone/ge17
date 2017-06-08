@@ -49,8 +49,9 @@ $('#bubble').empty();
           // {boolean} hideBottomTitle: Hide the bottom title.
           hideBottomTitle: false,
           // {number} maxRadius: The radius of the circles.
-          maxRadius: 20,
+          maxRadius: 15,
           tooltip: d3.tip().html(value => 'Value: ' + (value*100)),
+          padding: { top: 20, right: 0, bottom: 0, left: 10 }
         };
 
         var matrix = new BubbleMatrix(config);
