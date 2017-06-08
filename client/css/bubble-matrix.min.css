@@ -59,8 +59,6 @@
 
 .bubble-matrix .bottom-columns, .bubble-matrix .top-columns {
   text-anchor: middle;
-  transform: rotate(90deg);
-	transform-origin: left top 0;
 }
 
 .bubble-matrix .right-rows {
