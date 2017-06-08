@@ -812,7 +812,7 @@ var getHashtagsForMatrix = function(response) {
                             labels.push(documents[i].counts[j]["_id"]);
                             index = labels.indexOf(documents[i].counts[j]["_id"]);
                             var dataline = [];
-                            rows[index].push({name:documents[i].counts[j]["_id"], values:dataline});
+                            rows[index]=({name:documents[i].counts[j]["_id"], values:dataline});
 
                             var value;
                             if (i > 0 && documents[i - 1].counts[j]) {
