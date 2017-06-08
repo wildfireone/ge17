@@ -12,16 +12,16 @@
   <script src="./js//d3-tip/index.js"></script>
   <script src="./js/bubble-matrix.min.js"></script>
   <script>
-    var config = {
-      // Mandatory need argument root or id
-      // root: d3.select('#bubble'),
-      selector: '#bubble',
-      onClick: val => alert(`Value ${val}`)
-    };
+
 
     function generateGraph(){
         d3.json('http://188.166.165.168/getHashtagsForMatrix', function(data) {
-
+          var config = {
+            // Mandatory need argument root or id
+            // root: d3.select('#bubble'),
+            selector: '#bubble',
+            onClick: val => alert(`Value ${val}`)
+          };
 
           var matrix = new BubbleMatrix(config);
 
