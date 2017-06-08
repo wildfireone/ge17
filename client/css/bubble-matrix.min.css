@@ -58,17 +58,16 @@
 }
 
 .bubble-matrix .bottom-columns, .bubble-matrix .top-columns {
-  text-anchor: middle
+  text-anchor: middle;
+  transform: rotate(90deg);
+	transform-origin: left top 0;
 }
 
 .bubble-matrix .right-rows {
   text-anchor: end
 }
 
-text .column {
-	transform: rotate(90deg);
-	transform-origin: left top 0;
-}
+
 
 .d3-tip {
   background: rgba(0, 0, 0, .7);
