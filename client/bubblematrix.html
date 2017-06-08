@@ -29,8 +29,9 @@
 
   <script>
 
-
+var width =900;
     function generateGraph() {
+      width = width +10;
 $('#bubble').empty();
       d3.json('http://188.166.165.168/getHashtagsForMatrix', function(data) {
         console.log(data);
@@ -40,6 +41,7 @@ $('#bubble').empty();
           //width: 800,
           // {number} height: The height of the canvas, not the matrix.
           height: 1000,
+          width: width,
           selector: '#bubble',
           duration: 50,
           hideLeftTitle: false,
