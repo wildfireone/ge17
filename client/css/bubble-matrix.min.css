@@ -3,7 +3,7 @@
  * @Date:   05-Apr-162016
  * @Filename: bubble-matrix.min.css
  * @Last modified by:   john
- * @Last modified time: 08-Jun-172017
+ * @Last modified time: 09-Jun-172017
  */
 
 
@@ -59,7 +59,7 @@
 
 .bubble-matrix .bottom-columns, .bubble-matrix .top-columns {
   text-anchor: middle;
-  font-size: 0.5em;
+  font-size: 0.25em;
 }
 
 .bubble-matrix .right-rows {
