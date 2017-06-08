@@ -18,9 +18,9 @@ var ObjectId = require('mongodb').ObjectID;
 var mongoURL = 'mongodb://localhost:27017/tweets';
 
 
-var debateprefix = "debate_final_tuesday6";
+var debateprefix = "election-night";
 var prefix = debateprefix;
-var trackingtag = 'ScotDebates';
+var trackingtag = 'ge2017,ge17';
 
 //request handeler for routes
 const requestHandler = (request, response) => {

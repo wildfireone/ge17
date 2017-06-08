@@ -19,8 +19,8 @@ var hashspeccounter = require('./hashspeccounter');
 var sentimentcounter = require('./sentimentcounter');
 var sentigen = require('./sentigen');
 //var endpoints = require('./endpoints');
-var debateprefix = "debate_final_tuesday6";
-var trackingtag = 'ScotDebates';
+var debateprefix = "election-night";
+var trackingtag = 'ge2017,ge17';
 
 var client = new Twitter({
   consumer_key: 'r6zyjOV2sWUGYwbmLLL1GxCKl',
