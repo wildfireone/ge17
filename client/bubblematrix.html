@@ -3,9 +3,9 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="css/bubble-matrix.min.css">
+  <link rel="stylesheet" href="./css/bubble-matrix.min.css">
 
-    <script src='./js/d3/d3.min.js'></script>
+  <script src='./js/d3/d3.min.js'></script>
   <script src='./js//d3-tip/index.js'></script>
   <script src="./js/bubble-matrix.min.js"></script>
 </head>
@@ -14,31 +14,31 @@
   <div id="bubble"></div>
 
   <script>
+    function generateGraph() {
+      d3.json('http://188.166.165.168/getHashtagsForMatrix', function(data) {
+        var config = {
+          // Mandatory need argument root or id
+          // root: d3.select('#bubble'),
+          width: 800,
+          // {number} height: The height of the canvas, not the matrix.
+          height: 600,
+          selector: '#bubble',
+          onClick: val => alert(`Value ${val}`)
+        };
+
+        var matrix = new BubbleMatrix(config);
+
+        // Draw it.
+        matrix.draw(data);
 
 
-    function generateGraph(){
-        d3.json('http://188.166.165.168/getHashtagsForMatrix', function(data) {
-          var config = {
-            // Mandatory need argument root or id
-            // root: d3.select('#bubble'),
-            selector: '#bubble',
-            onClick: val => alert(`Value ${val}`)
-          };
-
-          var matrix = new BubbleMatrix(config);
-
-          // Draw it.
-          matrix.draw(data);
-
-
-        });
+      });
 
     }
     generateGraph();
-    setInterval(function(){generateGraph()}, 60000)
-
-
-
+    setInterval(function() {
+      generateGraph()
+    }, 60000)
   </script>
 </body>
 
