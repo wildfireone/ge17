@@ -4,7 +4,7 @@
 
 <head>
   <link rel="stylesheet" href="./css/bubble-matrix.min.css">
-<script src='./js/jquery.min.js'></script>
+  <script src='./js/jquery.min.js'></script>
   <script src='./js/d3/d3.min.js'></script>
   <script src='./js//d3-tip/index.js'></script>
   <script src="./js/bubble-matrix.min.js"></script>
@@ -14,7 +14,8 @@
   <div id="bubble"></div>
 
   <script>
-  $('#bubble').empty();
+    $('#bubble').empty();
+
     function generateGraph() {
 
       d3.json('http://188.166.165.168/getHashtagsForMatrix', function(data) {
@@ -26,17 +27,15 @@
           height: 1000,
           selector: '#bubble',
           duration: 50,
-          hideLeftTitle: true,
-  // {boolean} hideRightTitle: Hide the right title.
-  hideRightTitle: true,
-  // {boolean} hideTopTitle: Hide the top title.
-  hideTopTitle: true,
-  // {boolean} hideBottomTitle: Hide the bottom title.
-  hideBottomTitle: true,
-  // {number} maxRadius: The radius of the circles.
-  maxRadius: 5,
-  // {number} maxColors: The numbers of colors to used.
-  maxColors: 10,
+          hideLeftTitle: false,
+          // {boolean} hideRightTitle: Hide the right title.
+          hideRightTitle: true,
+          // {boolean} hideTopTitle: Hide the top title.
+          hideTopTitle: true,
+          // {boolean} hideBottomTitle: Hide the bottom title.
+          hideBottomTitle: true,
+          // {number} maxRadius: The radius of the circles.
+          maxRadius: 2,
           onClick: val => alert(`Value ${val}`)
         };
 
