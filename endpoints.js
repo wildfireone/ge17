@@ -883,7 +883,7 @@ var getHashtagsForMatrix = function(response) {
 
 }
 
-var getHashtagsForMatrix = function(response) {
+var getHashtagsForMatrix2 = function(response) {
   MongoClient.connect(mongoURL, function(err, db) {
     assert.equal(null, err);
     var labels = [];
