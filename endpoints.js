@@ -893,7 +893,7 @@ var getHashtagsForMatrix2 = function(response) {
     response.writeHeader(200, {
       "Content-Type": "application/json"
     });
-    var collection = db.collection('debate_sun21' + 'debatehashcounts');
+    var collection = db.collection('debate_sun21_' + 'debatehashcounts');
     collection.find().toArray(function(err, documents) {
       for (var i = 1; i < documents.length; i++) {
         columns.push(documents[i].realtime.split(" ")[1]);
