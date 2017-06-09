@@ -897,7 +897,7 @@ var getHashtagsForMatrix2 = function(response) {
     collection.find().toArray(function(err, documents) {
       for (var i = 1; i < documents.length; i++) {
         columns.push(documents[i].minute);
-        console.log(test);
+        //console.log(test);
         for (var j = 0; j < documents[i].counts.length; j++) {
           //console.log(documents[i].counts[j]["_id"]);
           if (documents[i].counts[j]["_id"].toLowerCase() == trackingtag.toLowerCase()) {
