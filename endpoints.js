@@ -896,7 +896,8 @@ var getHashtagsForMatrix2 = function(response) {
     var collection = db.collection('debate_sun21_' + 'debatehashcounts');
     collection.find().toArray(function(err, documents) {
       for (var i = 1; i < documents.length; i++) {
-        columns.push(documents[i].realtime.split(" ")[1]);
+        columns.push(documents[i].minute);
+        console.log(test);
         for (var j = 0; j < documents[i].counts.length; j++) {
           //console.log(documents[i].counts[j]["_id"]);
           if (documents[i].counts[j]["_id"].toLowerCase() == trackingtag.toLowerCase()) {
