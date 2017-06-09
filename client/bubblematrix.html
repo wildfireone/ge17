@@ -43,7 +43,7 @@ $('#bubble').empty();
           //width: 800,
           // {number} height: The height of the canvas, not the matrix.
           height: 800,
-          width: data.length * 20 ,
+          width: data.length * 10 ,
           selector: '#bubble',
           duration: 50,
           hideLeftTitle: false,
@@ -56,7 +56,7 @@ $('#bubble').empty();
           // {number} maxRadius: The radius of the circles.
           maxRadius: 15,
           tooltip: d3.tip().html(value => 'Value: ' + (value*100)),
-          padding: { top: 20, right: 0, bottom: 0, left: 10 }
+          padding: { top: 40, right: 0, bottom: 0, left: 10 }
         };
 
         var matrix = new BubbleMatrix(config);
