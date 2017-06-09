@@ -26,7 +26,7 @@
       </ul>
   </nav>
   <div id="bubble"></div>
-
+<div id="bubble2"></div>
   <script>
 
 var width =800;
@@ -66,6 +66,39 @@ $('#bubble').empty();
 
 
       });
+
+      $('#bubble2').empty();
+            d3.json('http://188.166.165.168:8080/getHashtagsForMatrix', function(data) {
+              console.log(data);
+              var config = {
+                // Mandatory need argument root or id
+                // root: d3.select('#bubble'),
+                //width: 800,
+                // {number} height: The height of the canvas, not the matrix.
+                height: 800,
+                width: data.length * 15 ,
+                selector: '#bubble2',
+                duration: 50,
+                hideLeftTitle: false,
+                // {boolean} hideRightTitle: Hide the right title.
+                hideRightTitle: true,
+                // {boolean} hideTopTitle: Hide the top title.
+                hideTopTitle: false,
+                // {boolean} hideBottomTitle: Hide the bottom title.
+                hideBottomTitle: false,
+                // {number} maxRadius: The radius of the circles.
+                maxRadius: 15,
+                tooltip: d3.tip().html(value => 'Value: ' + (value*100)),
+                padding: { top: 40, right: 0, bottom: 0, left: 10 }
+              };
+
+              var matrix = new BubbleMatrix(config);
+
+              // Draw it.
+              matrix.draw(data);
+
+
+            });
 
     }
     generateGraph();
