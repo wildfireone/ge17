@@ -3,7 +3,7 @@
 * @Date:   12-May-172017
 * @Filename: hashcounter.js
  * @Last modified by:   john
- * @Last modified time: 06-Jun-172017
+ * @Last modified time: 09-Jun-172017
 */
 
 var minutecounter =0;
@@ -47,7 +47,7 @@ var findHashtags = function(minute,db, callback) {
   console.log(prefix+'ge17');
   var collection = db.collection(prefix+'ge17');
   // Find some documents
-  collection.aggregate([{$unwind: '$entities.hashtags'},  { $group: {  _id: {$toLower:'$entities.hashtags.text'},  tagCount: {$sum: 1}  }},   { $sort: {  tagCount: -1  }},   { $limit: 10 } ]).toArray(function(err, docs){
+  collection.aggregate([{$unwind: '$entities.hashtags'},  { $group: {  _id: {$toLower:'$entities.hashtags.text'},  tagCount: {$sum: 1}  }},   { $sort: {  tagCount: -1  }},   { $limit: 100 } ]).toArray(function(err, docs){
 
     assert.equal(err, null);
     insertDocument(minute,db,docs,function() {

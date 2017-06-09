@@ -18,7 +18,7 @@ var ObjectId = require('mongodb').ObjectID;
 var mongoURL = 'mongodb://localhost:27017/tweets';
 
 
-var debateprefix = "election-night";
+var debateprefix = "election-night2";
 var prefix = debateprefix;
 var trackingtag = 'ge2017,ge17';
 
@@ -229,7 +229,7 @@ var getMentions2 = function(response) {
     collection.find().toArray(function(err, documents) {
       var lastvalues = [];
       //console.log("prefix + 'debatementioncounts' " + JSON.stringify(documents));
-      for (var i = 2; i < documents.length; i++) {
+      for (var i = 1; i < documents.length; i++) {
 
         var index = labels.indexOf(documents[i].account);
 
@@ -299,7 +299,7 @@ var getMentions = function(response) {
     var collection = db.collection(prefix + 'debatementioncounts');
     collection.find().toArray(function(err, documents) {
       //console.log("prefix + 'debatementioncounts' " + JSON.stringify(documents));
-      for (var i = 2; i < documents.length; i++) {
+      for (var i = 1; i < documents.length; i++) {
 
         var index = labels.indexOf(documents[i].account);
 
@@ -373,7 +373,7 @@ var getSentiment = function(response) {
 
     collection.find().toArray(function(err, documents) {
       //console.log("prefix + 'debatementioncounts' " + JSON.stringify(documents));
-      for (var i = 2; i < documents.length; i++) {
+      for (var i = 0; i < documents.length; i++) {
         //"NS":6,"RD":0,"KD":0,"PH":0,"WR":0,"DC":0,"TM":0,"JC":0,"TF":0,"PN":0
 
         //if(lastvalues[index]){ val = documents[i].count - lastvalues[index];}
@@ -724,6 +724,7 @@ var getHashtags2 = function(response) {
             var index = labels.indexOf(documents[i].counts[j]["_id"]);
             if (index > -1) {
               var value;
+
               if (documents[i - 1].counts[j]) {
                 value = documents[i].counts[j]["tagCount"] - documents[i - 1].counts[j]["tagCount"];
               } else {
