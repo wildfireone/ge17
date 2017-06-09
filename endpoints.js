@@ -48,6 +48,8 @@ const requestHandler = (request, response) => {
 
   } else if (request.url == "/getHashtagsForMatrix") {
     getHashtagsForMatrix(response);
+  } else if (request.url == "/getHashtagsForMatrix2") {
+    getHashtagsForMatrix2(response);
   } else if (request.url == "/sentimentstack") {
     servePage(response, "client/sentimentstack.html")
 
@@ -802,6 +804,96 @@ var getHashtagsForMatrix = function(response) {
       "Content-Type": "application/json"
     });
     var collection = db.collection(prefix + 'debatehashcounts');
+    collection.find().toArray(function(err, documents) {
+      for (var i = 1; i < documents.length; i++) {
+        columns.push(documents[i].realtime.split(" ")[1]);
+        for (var j = 0; j < documents[i].counts.length; j++) {
+          //console.log(documents[i].counts[j]["_id"]);
+          if (documents[i].counts[j]["_id"].toLowerCase() == trackingtag.toLowerCase()) {
+
+          } else if (documents[i].counts[j]["_id"].toLowerCase() == 'ge2017' || documents[i].counts[j]["_id"].toLowerCase() == 'ge17') {
+
+          } else {
+            var index = labels.indexOf(documents[i].counts[j]["_id"]);
+            if (index > -1) {
+
+              var value;
+
+              if (documents[i - 1].counts[j]) {
+                value = documents[i].counts[j]["tagCount"] - documents[i - 1].counts[j]["tagCount"];
+              } else {
+                value = documents[i].counts[j]["tagCount"];
+              }
+              if (value > 0) {
+                rows[index].values[i - 1] = ((value + 1) / 100);
+              }
+              else{
+                rows[index].values[i - 1] = null;
+              }
+            } else {
+              labels.push(documents[i].counts[j]["_id"]);
+              index = labels.indexOf(documents[i].counts[j]["_id"]);
+              var dataline = [];
+              rows[index] = ({
+                name: documents[i].counts[j]["_id"],
+                values: dataline
+              });
+
+              var value;
+              if (i > 0 && documents[i - 1].counts[j]) {
+                value = documents[i].counts[j]["tagCount"] - documents[i - 1].counts[j]["tagCount"];
+              } else {
+                value = documents[i].counts[j]["tagCount"];
+              }
+              if (value > 0) {
+                rows[index].values[i - 1] = ((value + 1) / 100);
+              }
+              else{
+                rows[index].values[i - 1] = null;
+              }
+            }
+          }
+        }
+      }
+
+
+      //console.log(labels);
+      //console.log(JSON.stringify(data));
+      var jsonresponse;
+      try {
+        jsonresponse = {
+          "columns": columns,
+          "rows": rows,
+          "length":documents.length
+        }
+
+      } catch (err) {
+        jsonresponse = {
+          "error": err,
+          "message": "no data refresh"
+        };
+      }
+      //console.log(JSON.stringify(jsonresponse));
+      response.write(JSON.stringify(jsonresponse));
+      response.end();
+      db.close();
+
+    });
+  });
+
+}
+
+var getHashtagsForMatrix = function(response) {
+  MongoClient.connect(mongoURL, function(err, db) {
+    assert.equal(null, err);
+    var labels = [];
+    var rows = [];
+    var columns = [];
+    var trackingtotals = [];
+    response.writeHeader(200, {
+      "Content-Type": "application/json"
+    });
+    var collection = db.collection('debate_sun21' + 'debatehashcounts');
     collection.find().toArray(function(err, documents) {
       for (var i = 1; i < documents.length; i++) {
         columns.push(documents[i].realtime.split(" ")[1]);
