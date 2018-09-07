@@ -3,19 +3,19 @@
  * @Date:   24-Apr-172017
  * @Filename: textserver.js
  * @Last modified by:   john
- * @Last modified time: 09-Jun-172017
+ * @Last modified time: 22-Aug-172017
  */
 
 
 
 // content of index.js
 const http = require('http');
-const port = 80;
+const port = 8080;
 const fs = require('fs');
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var ObjectId = require('mongodb').ObjectID;
-var mongoURL = 'mongodb://localhost:27017/tweets';
+var mongoURL = 'mongodb://localhost:27017/ge17';
 
 
 var debateprefix = "debate_final_tuesday6";
